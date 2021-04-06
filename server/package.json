@@ -13,13 +13,15 @@
   "keywords": [
     "InStock"
   ],
-  "author": "KevinTyrrellAlexanderGarciaAshleyGlennyCalebCross",
+  "author": "Kevin Tyrrell, Alexander Garcia, Ashley Glenny, Caleb Cross",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/KevinTyrrell/InStock/issues"
   },
   "homepage": "https://github.com/KevinTyrrell/InStock#readme",
   "dependencies": {
+    "concurrently": "^6.0.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1"
   },
   "devDependencies": {
