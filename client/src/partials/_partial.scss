@@ -1,0 +1,68 @@
+//**FONTS**
+@font-face {
+  font-family: "Titillium";
+  src: url("https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap");
+}
+
+@font-face {
+  font-family: "TitilliumSemi";
+  src: url("https://fonts.googleapis.com/css2?family=Titillium+Web:wght@600&display=swap");
+}
+//**FONT SIZING**
+
+//Mobile
+$moh1: 1.75rem;
+$moh2: 1.25rem;
+$moh3: 0.8125rem;
+$moh4: 0.6875rem;
+$mop1: 0.9375rem;
+$mop2: 0.8125rem;
+$mop3: 0.6875rem;
+
+//Tablet & Desktop
+$dth1: 2rem;
+$dth2: 1.5rem;
+$dth3: 0.875rem;
+$dth4: 0.75rem;
+$dtp1: 1rem;
+$dtp2: 0.875rem;
+$dtp3: 0.75rem;
+
+//**COLORS**
+
+//Primary Colors
+$stockBlack: #13182c;
+$stockIndigo: #2e66e5;
+$whites: #ffffff;
+
+//Secondary Colors
+$slate: #5c667e;
+$cloud: #bdc5d5;
+
+//Background Colors
+$graphite: #232940;
+$lightgrey: #f7f8f9;
+
+//Supporting Colors
+$in: #158463;
+$out: #c94515;
+
+//**MIXINS**
+
+@mixin mobile {
+  @media (min-width: 320px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: 1440px) {
+    @content;
+  }
+}
