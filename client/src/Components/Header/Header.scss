@@ -1,0 +1,40 @@
+.header {
+  background-color: #232940;
+  height: 200px;
+  width: 375px;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+
+  &__box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: baseline;
+  }
+
+  
+  &__logo {
+    height: 20px;
+    width: 89px;
+    padding: 24px 123px 15px 123px;
+    margin-bottom: 30px;
+  }
+
+  &__tabs {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  
+  &__warehouse {
+    color: #BDC5D5;
+    
+  }
+
+  &__inventory {
+    color: #BDC5D5;
+  }
+  
+}
