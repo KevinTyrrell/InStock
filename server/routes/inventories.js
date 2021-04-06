@@ -41,7 +41,7 @@ const readFile =(path) => {
 
         if( !(itemName && warehouseName && description && category && status && ( status == "Out of Stock" ?  1 : quantity )) )
          {
-            res.status(400).send("All new item fields are required")
+            res.status(400).send("All new item fields are REQUIRED")
             return
         }
 
