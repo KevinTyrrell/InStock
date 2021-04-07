@@ -19,7 +19,6 @@ router.get('/', (req, res) => {
     const allWarehouses = JSON.parse(fs.readFileSync(srcPath));
     res.json(allWarehouses);
     
-  //   res.send('hello world')
   })
   
 
@@ -42,6 +41,8 @@ router.get('/', (req, res) => {
         const { position, phone, email } = req.body.contact
 
         let parsedWarehouseData = readFile(WAREHOUSE_JSON_PATH)
+        let parsedInventoryData = readFile(INVENTORY_JSON_PATH)
+
 
         if( !(name && address && city && country) )
             {
@@ -57,30 +58,47 @@ router.get('/', (req, res) => {
 
         const foundWarehouseIndex = parsedWarehouseData.findIndex( warehouse => warehouseId == warehouse.id )
 
+
         if( foundWarehouseIndex === -1 )
             {
             res.status(404).send("Warehouse not found")
             return
             }
 
+        const warehouseNameToChange = parsedWarehouseData[foundWarehouseIndex].name
+
+        if(name != warehouseNameToChange ){
+
+            let changeIndexes = []
+            parsedInventoryData.forEach((item, index) =>{
+
+                if(item.warehouseName == warehouseNameToChange){
+                    changeIndexes.push(index)
+                }})
+
+            changeIndexes.forEach(inventoryIndex => {
+                parsedInventoryData[inventoryIndex].warehouseName = name
+            })
+
+            const stringInventoryData = JSON.stringify(parsedInventoryData);
+            fs.writeFileSync(INVENTORY_JSON_PATH, stringInventoryData)
+            }
+            
+
          parsedWarehouseData[foundWarehouseIndex] = 
         {
         ...parsedWarehouseData[foundWarehouseIndex],
         ...req.body
         } 
-        const stringInventoryData = JSON.stringify(parsedWarehouseData);
-        fs.writeFileSync(INVENTORY_JSON_PATH, stringInventoryData)
+        const stringWarehouseData = JSON.stringify(parsedWarehouseData);
+        fs.writeFileSync(WAREHOUSE_JSON_PATH, stringWarehouseData)
 
         res.status(200).json(parsedWarehouseData[foundWarehouseIndex])
     })
 
 /* DELETE A WAREHOUSE */
-    router.delete("/warehouseId", (req, res) => {
+    router.delete("/:warehouseId", (req, res) => {
 
     })
-
-    
-    
-
 
     module.exports = router;
