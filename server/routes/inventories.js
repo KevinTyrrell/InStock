@@ -14,22 +14,10 @@ const readFile =(filepath) => {
     return JSON.parse(data);
 }
 
-const bodyValidation = (body) => {
-
-    const { itemName, warehouseName, description, category, status, quantity } = body
-
-        if( !(itemName && warehouseName && description && category && status && ( status == "Out of Stock" ?  1 : quantity )) )
-         {
-            
-            return (res.status(400).send("All new item fields are REQUIRED"))
-        }
-}
 
 /* GET ALL INVENTORY ITEMS */
 router.get('/', (req, res) => {
-    const srcPath = path.resolve(__dirname, '../../server/data/warehouses.json');
-    const allWarehouses = JSON.parse(fs.readFileSync(srcPath));
-    res.json(allWarehouses);
+
   })
     
 
