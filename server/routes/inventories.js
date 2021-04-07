@@ -6,9 +6,13 @@ const WAREHOUSE_JSON_PATH = '../data/warehouses.json'
 const INVENTORY_JSON_PATH = '../data/inventories.json'
 
 /* GET ALL INVENTORY ITEMS */
-    router.get("/", (req, res) => {
-            
-    })
+router.get('/', (req, res) => {
+    const srcPath = path.resolve(__dirname, '../../server/data/warehouses.json');
+    const allWarehouses = JSON.parse(fs.readFileSync(srcPath));
+    res.json(allWarehouses);
+  //   res.send('hello world')
+  })
+    
 
 /* GET SINGLE INVENTORY ITEM*/
     router.get("/:itemId", (req, res) => {
