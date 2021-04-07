@@ -3,16 +3,26 @@ import './Header.scss';
 import logo from '../../InStock Assets/Logo/InStock-Logo_1x.png';
 
 export default class Header extends Component {
+  state = {
+    warehouse: 'active',
+    inventory: ''
+  }
+  handleClick = (e) => {
+    if(e.target.name === 'warehouse'){this.setState({warehouse: 'active', inventory: ''})
+  } else {
+    this.setState({inventory: 'active', warehouse: ''})
+  }
+    console.log(e.target.name)
+  }
   render() {
     return (
       <div className="header">
         <div className="header__box">
          <img  className="header__logo" src={logo} alt=''/>
-         <ul className="header__tabs">
-            <li className="header__warehouse"><a href="#">Warehouses</a></li>
-            <li className="header__inventory"><a href="#">Inventory
-              </a></li>
-          </ul> 
+         <div className="header__tabs">
+            <button className={`header__warehouse ${this.state.warehouse}`} name='warehouse' onClick={this.handleClick}>Warehouses</button>
+            <button className={`header__inventory ${this.state.inventory}`} name='inventory' onClick={this.handleClick}>Inventory</button>
+          </div> 
         </div>
       </div>
     )

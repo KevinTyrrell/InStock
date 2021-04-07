@@ -1,5 +1,7 @@
+@use '../../partials/partial';
+
 .header {
-  background-color: #232940;
+  background-color:#232940;
   height: 200px;
   width: 375px;
   display:flex;
@@ -30,11 +32,13 @@
   
   &__warehouse {
     color: #BDC5D5;
-    
   }
 
   &__inventory {
     color: #BDC5D5;
   }
   
+  .active {
+    background-color: red;
+  }
 }
