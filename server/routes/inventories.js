@@ -7,9 +7,9 @@ const { v4: uuidv4 } = require('uuid');
 const WAREHOUSE_JSON_PATH = 'data/warehouses.json'
 const INVENTORY_JSON_PATH = 'data/inventories.json'
 
-const readFile =(path) => {
+const readFile =(filepath) => {
 
-    let data = fs.readFileSync(path)
+    let data = fs.readFileSync(filepath)
     
     return JSON.parse(data);
 }
@@ -30,7 +30,6 @@ router.get('/', (req, res) => {
     const srcPath = path.resolve(__dirname, '../../server/data/warehouses.json');
     const allWarehouses = JSON.parse(fs.readFileSync(srcPath));
     res.json(allWarehouses);
-  //   res.send('hello world')
   })
     
 
