@@ -44,10 +44,18 @@
 
   
   &__logo {
-    height: 28px;
-    width: 128px;
-    padding: 24px 123px 15px 123px;
-    margin-bottom: 10px;
+    @include mobile{
+      height: 28px;
+      width: 128px;
+      padding: 24px 123px 15px 123px;
+      margin-bottom: 10px;
+    }
+    @include tablet {
+      padding: 35px 354px 0 0;
+    }
+    @include desktop {
+      padding: 35px 794px 0px 0;
+    }
   }
 
   &__tabs {
@@ -58,10 +66,10 @@
       justify-content: space-around;
     }
     @include tablet {
-      display: flex;
+      padding-top: 30px;
     }
     @include desktop {
-
+      
     }
   }
   

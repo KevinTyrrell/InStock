@@ -12,8 +12,10 @@ footer {
   }
   @include tablet {
     padding: 40px 209px 40px 209px;
+    font-size: 12px;
   }
   @include desktop {
     padding: 40px 545px 40px 545px;
+    font-size: 12px;
   }
 }
