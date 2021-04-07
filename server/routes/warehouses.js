@@ -1,14 +1,17 @@
 const express = require('express')
 const router = express.Router()
-
-
-const WAREHOUSE_JSON_PATH = '../data/warehouses.json'
-const INVENTORY_JSON_PATH = '../data/inventories.json'
 const fs = require('fs');
 const path = require('path');
 
+const WAREHOUSE_JSON_PATH = 'data/warehouses.json'
+const INVENTORY_JSON_PATH = 'data/inventories.json'
 
+const readFile =(path) => {
 
+    let data = fs.readFileSync(path)
+    
+    return JSON.parse(data);
+}
 
 /* GET ALL WAREHOUSES */
 router.get('/', (req, res) => {
@@ -32,8 +35,43 @@ router.get('/', (req, res) => {
     })
 
 /* UPDATE A WAREHOUSE */
-    router.patch("/warehouseId", (req, res) => {
+    router.patch("/:warehouseId", (req, res) => {
+        
+        const { warehouseId } = req.params
+        const { name, address, city, country} = req.body
+        const { position, phone, email } = req.body.contact
 
+        let parsedWarehouseData = readFile(WAREHOUSE_JSON_PATH)
+
+        if( !(name && address && city && country) )
+            {
+            res.status(400).send("All Warehouse detail fields are REQUIRED")
+            return
+            }
+
+        if( !(req.body.contact.name && position && phone && email) )
+            {
+            res.status(400).send("All Contact Detail fields are REQUIRED")
+            return
+            }
+
+        const foundWarehouseIndex = parsedWarehouseData.findIndex( warehouse => warehouseId == warehouse.id )
+
+        if( foundWarehouseIndex === -1 )
+            {
+            res.status(404).send("Warehouse not found")
+            return
+            }
+
+         parsedWarehouseData[foundWarehouseIndex] = 
+        {
+        ...parsedWarehouseData[foundWarehouseIndex],
+        ...req.body
+        } 
+        const stringInventoryData = JSON.stringify(parsedWarehouseData);
+        fs.writeFileSync(INVENTORY_JSON_PATH, stringInventoryData)
+
+        res.status(200).json(parsedWarehouseData[foundWarehouseIndex])
     })
 
 /* DELETE A WAREHOUSE */
