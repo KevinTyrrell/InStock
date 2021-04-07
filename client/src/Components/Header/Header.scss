@@ -1,6 +1,8 @@
 @use '../../partials/partial';
 
+
 .header {
+  position: absolute;
   background-color:#232940;
   height: 200px;
   width: 375px;
@@ -31,14 +33,23 @@
   }
   
   &__warehouse {
-    color: #BDC5D5;
+    color: #bdc5d5;
+    border: none;
+    background-color: #232940;
+
   }
 
   &__inventory {
-    color: #BDC5D5;
+    color: #bdc5d5;
+    border: none;
+    background-color: #232940;
   }
   
   .active {
-    background-color: red;
+    color: #FFFFFF;
+    background-color: #13182c;
+    width: 164px;
+    height: 36px;
+    border-radius: 20px;
   }
 }
