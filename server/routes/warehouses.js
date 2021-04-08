@@ -1,16 +1,16 @@
+
 const express = require('express')
-const router = express.Router()
 const fs = require('fs');
 const path = require('path');
 
-const express = require("express");
-const router = express.Router();
 const JSONData = require("./../util/json-data.js");
 
+const router = express.Router()
 const warehouseJSON = new JSONData("warehouses");
 const inventoryJSON = new JSONData("inventories");
 
-function getWarehouses(res) { // Returns array of warehouses.
+// Returns an array of all warehouses.
+function getWarehouses(res) {
     return warehouseJSON.load((err) => {
         res.status(500).send(err);
     });
@@ -19,7 +19,6 @@ function getWarehouses(res) { // Returns array of warehouses.
 // Returns the index of the first warehouse matching an ID.
 function getWarehouseIndex(warehouses, res, id) {
     if (id) {
-
         const index = warehouses.findIndex((wh) => wh.id === id);
         if (index < 0) res.status(400).send(`No such warehouse exists with ID: ${id}`);
         else return index;
