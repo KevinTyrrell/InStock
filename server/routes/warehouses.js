@@ -19,13 +19,12 @@ router.get('/', (req, res) => {
     const allWarehouses = JSON.parse(fs.readFileSync(srcPath));
     res.json(allWarehouses);
     
-  })
+})
 
 /* GET A SINGLE WAREHOUSE */
 router.get("/:warehouseId", (req, res) => {
   const id = req.params.warehouseId;
-  const srcPath = path.resolve(__dirname, "../data/warehouses.json");
-  const allWarehouses = JSON.parse(fs.readFileSync(srcPath));
+  const allWarehouses = JSON.parse(fs.readFileSync(WAREHOUSE_JSON_PATH));
   const warehouseId = allWarehouses.find((warehouse) => warehouse.id == id);
   res.json(warehouseId);
 });
