@@ -1,0 +1,126 @@
+@use '../../partials/partial' as *;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.warehouses {
+    max-width: 21.4rem;
+    margin: auto;
+    margin-bottom: 1.5rem;
+    // margin: 0 1.5rem;
+
+        &__wrapperOne {
+            margin: 0 1.5rem;
+        }
+       
+        &__title {
+            font-family: "Titillium"; 
+            font-size: $moh1;
+            font-weight: 600;
+            padding: 2rem 10.6rem 1rem 0;
+         }
+
+
+         &__search {
+            width: 17rem;
+            height: 2.25rem;
+            border-radius: 1.25rem;
+            border: none;
+            border: 1px solid $cloud;
+            background-image: url('../../assets/Icons/search-24px.svg');
+            background-repeat: no-repeat;
+            background-position-x: 14.5rem;
+            background-position-y: center;
+            padding-left: 1rem;
+            margin-bottom: 1rem;
+            // edit font family
+         }
+
+         &__button {
+             width: 17rem;
+             height: 2.25rem;
+             border-radius: 1.25rem;
+             border: none;
+             background-color: $stockIndigo;
+             color: white;
+         }
+
+         &__bottom-border {
+             border-bottom: 1px solid $cloud;
+             margin: 1.5rem 0 1rem 0; 
+         }
+
+         &__row-headers {
+             display: none;
+         }
+    
+}
+
+.info {
+    
+
+    td {
+        font-size: .8125rem;
+        // margin-bottom: 1.18rem;
+    }
+
+    h4 {
+        font-size: .68rem;
+        color: $slate;
+        line-height: 1rem;
+        margin-bottom: .25rem;
+    }
+
+    &__details {
+        display: flex;
+        margin-left: 1.5rem;
+    }
+
+    &__top-border {
+        border-top: 1px solid $cloud;
+        margin-top: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    &__icons {
+        margin-left: 1.5rem;
+        display: flex;
+        justify-content: space-between;
+        margin-right: 1.5rem;
+        margin-top: 1.18rem;
+        // margin-bottom: 1rem;
+    }
+    &__chevron {
+        display: flex;
+        align-items: center;
+    }
+
+    &__warehouse-name {
+       color: $stockIndigo;
+       font-weight: 600; 
+    }
+
+    &__address-container {
+        margin-top: 1rem;
+        line-height: 1.25rem;
+    }
+    
+    
+}
+
+.contact {
+    margin-left: 1rem;
+    // border: 1px solid red;
+    
+    &__name {
+        margin-bottom: 1rem;
+
+    }
+
+    &__info {
+        line-height: 1.3rem;
+    }
+}

@@ -16,7 +16,6 @@ router.get('/', (req, res) => {
     const allWarehouses = JSON.parse(fs.readFileSync(srcPath));
     res.json(allWarehouses);
     
-  //   res.send('hello world')
   })
   
 
