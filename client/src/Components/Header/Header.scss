@@ -1,0 +1,96 @@
+@use '../../partials/partial' as *;
+
+
+.header {
+  @include mobile {
+    position: absolute;
+    background-color:#232940;
+    height: 200px;
+    width: 100%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    
+    @include tablet {
+      position: absolute;
+      width: 100%;
+      height: 186px;  
+    }
+
+    @include desktop {
+      position: absolute;
+      width: 100%;
+      height: 186px;
+    }
+  }
+
+  &__box {
+    @include mobile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      align-self: baseline;
+    }
+    @include tablet {
+      display: flex;
+      flex-direction: row;
+    }
+    @include desktop {
+      display: flex;
+      flex-direction: row;
+
+    }
+  }
+
+  
+  &__logo {
+    @include mobile{
+      height: 28px;
+      width: 128px;
+      padding: 24px 123px 15px 123px;
+      margin-bottom: 10px;
+    }
+    @include tablet {
+      padding: 35px 354px 0 0;
+    }
+    @include desktop {
+      padding: 35px 794px 0px 0;
+    }
+  }
+
+  &__tabs {
+    @include mobile {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+    }
+    @include tablet {
+      padding-top: 30px;
+    }
+    @include desktop {
+      
+    }
+  }
+  
+  &__warehouse {
+    color: #bdc5d5;
+    border: none;
+    background-color: #232940;
+
+  }
+
+  &__inventory {
+    color: #bdc5d5;
+    border: none;
+    background-color: #232940;
+  }
+  
+  .active {
+    color: #FFFFFF;
+    background-color: #13182c;
+    width: 164px;
+    height: 36px;
+    border-radius: 20px;
+  }
+}

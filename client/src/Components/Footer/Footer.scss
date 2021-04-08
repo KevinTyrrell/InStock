@@ -1,0 +1,21 @@
+@use '../../partials/partial' as *;
+
+footer {
+  @include mobile {
+    position: absolute;
+    font-size: 11px;
+    color: $slate;
+    top: 1751px;
+    padding: 20px 37px 45px 37px;
+    right: 50px;
+    height: 16px;
+  }
+  @include tablet {
+    padding: 40px 209px 40px 209px;
+    font-size: 12px;
+  }
+  @include desktop {
+    padding: 40px 545px 40px 545px;
+    font-size: 12px;
+  }
+}
