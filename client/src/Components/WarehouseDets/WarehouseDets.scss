@@ -1,0 +1,204 @@
+@use '../../partials/partial' as *;
+
+// * {
+//   margin: 0;
+//   padding: 0;
+//   box-sizing: border-box;
+// }
+
+h4 {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+.inline {
+  display: flex;
+}
+
+.warehouse {
+  display: flex;
+  flex-direction: column;
+  width: 91.5%;
+  margin: auto;
+  box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
+  border-radius: 3px;
+
+  &__inline {
+    display: flex;
+    border-bottom: 1px solid $cloud;
+    padding-left: 1.5rem;
+    justify-content: space-between;
+    padding-right: 1.5rem;
+  }
+
+  &__name {
+    @include moH1;
+    color: $stockBlack;
+    padding-left: 0.5rem;
+  }
+}
+
+.details {
+  padding-left: 1.5rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  @include tablet {
+    display: flex;
+    align-items: center;
+  }
+  &__address {
+    @include moH4;
+    color: $slate;
+    width: 114px;
+    height: 16px;
+    margin-bottom: 0.5rem;
+
+    &--loc {
+      @include moP2;
+      color: $stockBlack;
+      width: 259px;
+      height: 40px;
+      @include tablet {
+        width: 214px;
+        height: 44px;
+        padding-right: 2rem;
+      }
+    }
+  }
+}
+
+.contact {
+  display: flex;
+  margin-top: 1rem;
+  @include tablet {
+    margin: 0;
+    border-left: 1px solid $cloud;
+    padding-left: 2rem;
+  }
+  &__name {
+    @include moH4;
+    color: $slate;
+    width: 79px;
+    height: 16px;
+    margin-bottom: 0.5rem;
+
+    &--pos {
+      @include moP2;
+      color: $stockBlack;
+      width: 140px;
+      height: 40px;
+    }
+  }
+
+  &__inline {
+    margin-left: 1rem;
+  }
+
+  &__info {
+    @include moH4;
+    color: $slate;
+    width: 119px;
+    height: 16px;
+    margin-bottom: 0.5rem;
+
+    &--phone {
+      @include moP2;
+      color: $stockBlack;
+    }
+  }
+}
+
+.pos {
+  width: 140px;
+  height: 40px;
+  margin-right: 1rem;
+}
+
+.inv {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  border-top: 1px solid $cloud;
+  padding-top: 1rem;
+  @include tablet {
+    border-top: none;
+  }
+
+  &__inline {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__item {
+    @include moH4;
+    color: $slate;
+    width: 83px;
+    height: 16px;
+
+    &--inline {
+      display: flex;
+      align-items: center;
+    }
+
+    &--prod {
+      @include moH3;
+      color: $stockIndigo;
+    }
+  }
+
+  &__status {
+    @include moH4;
+    color: $slate;
+    width: 37px;
+    height: 16px;
+    padding-bottom: 0.25rem;
+
+    &--inout {
+      @include moH4;
+      background: rgba(21, 132, 99, 0.07);
+      border-radius: 20px;
+      width: 61px;
+      height: 24px;
+    }
+  }
+
+  &__cat {
+    @include moH4;
+    color: $slate;
+    width: 51px;
+    height: 16px;
+
+    &--type {
+      @include moP2;
+    }
+  }
+
+  &__qty {
+    @include moH4;
+    color: $slate;
+    width: 19px;
+    height: 16px;
+
+    &--amt {
+      @include moP2;
+    }
+  }
+
+  &__icons {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+}
+
+.itemStatus {
+  display: flex;
+}
+
+.itemInfo {
+  display: flex;
+  padding-top: 1.5rem;
+}
