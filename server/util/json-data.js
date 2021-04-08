@@ -12,7 +12,7 @@ class JSONData {
      * @param {String} name Filename, without extension.
      */
     constructor(name) {
-        this.path = path.resolve(__dirname, DEFAULT_RELATIVE_JSON_PATH, `${name}.json`);
+        this.path = path.resolve(__dirname, this.DEFAULT_RELATIVE_JSON_PATH, `${name}.json`);
     }
 
     /**
