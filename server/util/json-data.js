@@ -23,8 +23,8 @@ class JSONData {
      */
     load(errCallback) {
         if (!fs.existsSync(this.path))
-            throw Error(`Warehouse Path does not exist: ${this.path}`);
-        return JSON.parse(fs.readFileSync(this.path));
+            errCallback(`File does not exist: ${this.path}`);
+        else return JSON.parse(fs.readFileSync(this.path));
     }
 
     /**

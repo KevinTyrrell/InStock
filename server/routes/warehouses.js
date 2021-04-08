@@ -11,8 +11,8 @@ const warehouseJSON = new JSONData("warehouses");
 const inventoryJSON = new JSONData("inventories");
 
 function getWarehouses(res) { // Returns array of warehouses.
-    return warehouseJSON.load(() => {
-        res.status(500).send("Warehouse.json is missing!");
+    return warehouseJSON.load((err) => {
+        res.status(500).send(err);
     });
 }
 
@@ -108,12 +108,20 @@ router.patch("/:warehouseId", (req, res) => {});
 /* DELETE A WAREHOUSE */
 router.delete("/:warehouseId", (req, res) =>
 {
-    const warehouses = getWarehouses(res);
-    if (!warehouses) return;
-    const index = getWarehouseIndex(res, req.params.warehouseId);
-    if (index) {
-        warehouses.splice(index, 1);
-        warehouseJSON.save(warehouses);
+    const warehouses = getWarehouses(res); if (!warehouses) return;
+    const id = req.params.warehouseId;
+    const index = getWarehouseIndex(res, id); if (!index) return;
+
+    // Remove the warehouse which matches the ID.
+    warehouses.splice(index, 1);
+    warehouseJSON.save(warehouses);
+
+    // Remove ALL inventories which match the I
+    const inventories = inventoryJSON.load((err) => {
+        res.status(500).send(err);
+    });
+    if (inventories) {
+        inventoryJSON.save(inventories.filter((inv) => inv.warehouseID !== id))
     }
 });
 
