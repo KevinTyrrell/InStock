@@ -20,18 +20,18 @@ router.get('/', (req, res) => {
     res.json(allWarehouses);
     
   })
-  
-
 
 /* GET A SINGLE WAREHOUSE */
-    router.get("/:warehouseId", (req, res) => {
-
-    })
+router.get("/:warehouseId", (req, res) => {
+  const id = req.params.warehouseId;
+  const srcPath = path.resolve(__dirname, "../data/warehouses.json");
+  const allWarehouses = JSON.parse(fs.readFileSync(srcPath));
+  const warehouseId = allWarehouses.find((warehouse) => warehouse.id == id);
+  res.json(warehouseId);
+});
 
 /* CREATE A NEW WAREHOUSE */
-    router.post("/", (req, res) => {
-
-    })
+router.post("/", (req, res) => {});
 
 /* UPDATE A WAREHOUSE */
     router.patch("/:warehouseId", (req, res) => {
@@ -101,4 +101,4 @@ router.get('/', (req, res) => {
 
     })
 
-    module.exports = router;
+module.exports = router;
