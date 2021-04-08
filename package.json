@@ -1,5 +1,26 @@
 {
+  "name": "InStock",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "server": "cd server && nodemon index.js",
+    "client": "cd client && npm run start",
+    "dev": "concurrently -kill-others \"npm run server\" \"npm run client\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KevinTyrrell/InStock.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KevinTyrrell/InStock/issues"
+  },
+  "homepage": "https://github.com/KevinTyrrell/InStock#readme",
   "dependencies": {
-    "sass": "^1.32.8"
+    "concurrently": "^6.0.1"
   }
 }
