@@ -1,32 +1,118 @@
 //**FONTS**
 @font-face {
-  font-family: "Titillium";
-  src: url("https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap");
+  font-family: "Titillium Web";
+  src: url("./fonts/TitilliumWeb-Regular.ttf");
 }
 
 @font-face {
-  font-family: "TitilliumSemi";
-  src: url("https://fonts.googleapis.com/css2?family=Titillium+Web:wght@600&display=swap");
+  font-family: "Titillium Semi";
+  src: url("./fonts/TitilliumWeb-SemiBold.ttf");
 }
 //**FONT SIZING**
 
 //Mobile
-$moh1: 1.75rem;
-$moh2: 1.25rem;
-$moh3: 0.8125rem;
-$moh4: 0.6875rem;
-$mop1: 0.9375rem;
-$mop2: 0.8125rem;
-$mop3: 0.6875rem;
+@mixin moH1 {
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.75rem;
+  line-height: 36px;
+}
+@mixin moH2 {
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.25rem;
+  line-height: 28px;
+}
+@mixin moH3 {
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 0.8125rem;
+  line-height: 20px;
+}
+@mixin moH4 {
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 0.6875rem;
+  line-height: 16px;
+}
+@mixin moP1 {
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.9375rem;
+  line-height: 26px;
+}
+@mixin moP2 {
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.8125rem;
+  line-height: 20px;
+}
+@mixin moP3 {
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.6875rem;
+  line-height: 1rem;
+}
 
 //Tablet & Desktop
-$dth1: 2rem;
-$dth2: 1.5rem;
-$dth3: 0.875rem;
-$dth4: 0.75rem;
-$dtp1: 1rem;
-$dtp2: 0.875rem;
-$dtp3: 0.75rem;
+
+@mixin dtH1 {
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 2rem;
+  line-height: 40px;
+}
+@mixin dtH2 {
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.5rem;
+  line-height: 32px;
+}
+@mixin dtH3 {
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 0.875rem;
+  line-height: 22px;
+}
+@mixin dtH4 {
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 0.75rem;
+  line-height: 18px;
+}
+
+@mixin dtP1 {
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1rem;
+  line-height: 28px;
+}
+@mixin dtP2 {
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.875rem;
+  line-height: 22px;
+}
+@mixin dtP3 {
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.75rem;
+  line-height: 18px;
+}
 
 //**COLORS**
 

@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const fs = require("fs");
 const { v4: uuidv4 } = require("uuid");
+const path = require("path");
 
 const WAREHOUSE_JSON_PATH = "data/warehouses.json";
 const INVENTORY_JSON_PATH = "data/inventories.json";
@@ -13,9 +14,11 @@ const readFile = (path) => {
 };
 
 /* GET ALL INVENTORY ITEMS */
-    router.get("/", (req, res) => {
-
-    })  
+router.get("/", (req, res) => {
+  const srcPath = path.resolve(__dirname, "../data/inventories.json");
+  const allInventory = JSON.parse(fs.readFileSync(srcPath));
+  res.json(allInventory);
+});
 
 /* GET SINGLE INVENTORY ITEM*/
 router.get("/:itemId", (req, res) => {});
