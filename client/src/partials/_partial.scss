@@ -152,3 +152,72 @@ $out: #c94515;
     @content;
   }
 }
+
+%input-radius {
+  border: 1px solid #BDC5D5;
+  box-sizing: border-box;
+  border-radius: 20px;
+}
+%input {
+  height: 2.25rem;
+}
+
+%flex-column {
+  display: flex;
+  flex-direction: column;
+}
+%flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+%h1 {
+     @include moH1;
+
+   @include tablet {
+     @include dtH1;
+   }
+}
+
+%h2 {
+     @include moH2;
+
+   @include tablet {
+     @include dtH2;
+   }
+}
+
+%h3 {
+     @include moH3;
+
+   @include tablet {
+     @include dtH3;
+   }
+}
+
+%section-pad {
+    padding: 1rem 1.5rem 1.5rem;
+
+  @include tablet {
+    padding: 0 2rem;
+  }
+
+  @include desktop {
+    padding: 0 2.5rem;
+  }
+
+}
+
+%topdivider {
+  border-top: 1px solid $cloud;
+}
+
+%innertext {
+  padding: .5rem 1rem;
+  @include moP2;
+
+  @include tablet {
+    @include dtP2;
+  }
+
+}

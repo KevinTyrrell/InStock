@@ -1,0 +1,52 @@
+
+@use '../../partials/partial' as *;
+
+.form{
+    
+
+    &__input-radius{
+        @extend %input-radius;
+        @extend %input;
+    
+
+    }
+    
+    &__section {
+    height:min-content;
+    @extend %flex-column;
+    @extend %section-pad;
+    @extend %topdivider;
+    
+
+
+        .section__title {
+            @extend %h2;
+            padding-bottom: .5rem;
+        }
+
+        .input__title {
+            @extend %h3;
+            padding-top: 1rem;
+            padding-bottom: .25rem;
+
+            &-radio{
+                @include moP2;
+
+                @include tablet {
+                    @include dtP2;
+                  }
+            }
+        }
+
+        input[type=text]{
+            @extend %innertext;
+        }
+
+        textarea {
+            @extend %innertext;
+            height: 7.5rem;
+        }
+
+    }
+
+}
