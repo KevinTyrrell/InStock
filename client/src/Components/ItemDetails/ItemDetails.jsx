@@ -4,22 +4,6 @@ import axios from 'axios'
 
 export class ItemDetails extends Component {
 
-    state = {
-        warehouseList: [],
-        categoryList: []
-    }
-
-componentDidMount() {
-    
-    axios.get("/inventories")
-    .then( (response) => {
-        
-        this.setState({categoryList: [...response.data] })
-            
-    })
-    
-}
-
     render() {
 
         
@@ -32,7 +16,10 @@ componentDidMount() {
                 <textarea style={{ resize: "none" }} className="form__input-radius" type="text" placeholder="Please enter a brief item description..." name="item_name" />
             <label className="input__title" htmlFor="category">Category</label>
                 <select className="form__input-radius" name="category">
-                
+                <option value="Please Select">Please Select</option>
+                {this.props.categoryList.map( category=> {
+                        return (<option value={category}>{category}</option>)
+                    })}
                 </select>
         </section>
         )
