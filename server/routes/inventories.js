@@ -7,11 +7,12 @@ const path = require("path");
 const WAREHOUSE_JSON_PATH = "data/warehouses.json";
 const INVENTORY_JSON_PATH = "data/inventories.json";
 
-const readFile = (path) => {
-  let data = fs.readFileSync(path);
+const readFile =(filepath) => {
 
-  return JSON.parse(data);
-};
+    let data = fs.readFileSync(filepath)
+    
+    return JSON.parse(data);
+}
 
 /* GET ALL INVENTORY ITEMS */
 router.get("/", (req, res) => {
@@ -83,9 +84,40 @@ router.post("/", (req, res) => {
 });
 
 /* UPDATE SINGLE INVENTORY ITEM*/
-router.patch("/:itemId", (req, res) => {});
+    router.patch("/:itemId", (req, res) => {
+
+        let parsedInventoryData = readFile(INVENTORY_JSON_PATH)
+
+        const { itemId } = req.params
+        const { itemName, warehouseName, description, category, status, quantity } = req.body
+
+        if( !(itemName && warehouseName && description && category && status && ( status == "Out of Stock" ?  1 : quantity )) )
+         {
+            res.status(400).send("All item fields are REQUIRED")
+            return
+        }
+
+        const foundItemIndex = parsedInventoryData.findIndex( item => itemId == item.id )
+
+            if( foundItemIndex === -1 ) {
+                res.status(404).send("Item not found")
+                return
+            }
+
+        parsedInventoryData[foundItemIndex] = 
+        {
+        ...parsedInventoryData[foundItemIndex],
+        ...req.body
+        }
+
+        const stringInventoryData = JSON.stringify(parsedInventoryData);
+        fs.writeFileSync(INVENTORY_JSON_PATH, stringInventoryData)
+
+        res.status(200).json(parsedInventoryData[foundItemIndex])
+
+    })
 
 /* DELETE A INVENTORY ITEM */
 router.delete("/itemId", (req, res) => {});
 
-module.exports = router;
+module.exports = router
