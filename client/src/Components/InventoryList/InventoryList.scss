@@ -2,6 +2,8 @@
 
 h4 {
   margin: 0;
+  display: flex;
+  align-items: center;
 }
 
 .inventories {
@@ -65,12 +67,19 @@ h4 {
 .allInv {
   border-top: 1px solid $cloud;
   margin-bottom: 1.5rem;
+  @include tablet {
+    border-top: none;
+    border-bottom: 1px solid $cloud;
+  }
 
   &__items {
     @include moH4;
     color: $slate;
     width: 83px;
     height: 16px;
+    @include tablet {
+      display: none;
+    }
 
     &--item {
       @include moH3;
@@ -83,6 +92,9 @@ h4 {
     color: $slate;
     width: 37px;
     height: 16px;
+    @include tablet {
+      display: none;
+    }
 
     &--inOut {
       @include moH4;
@@ -99,6 +111,9 @@ h4 {
     color: $slate;
     width: 51px;
     height: 16px;
+    @include tablet {
+      display: none;
+    }
 
     &--label {
       @include moP2;
@@ -113,6 +128,9 @@ h4 {
     color: $slate;
     width: 19px;
     height: 16px;
+    @include tablet {
+      display: none;
+    }
 
     &--num {
       @include moP2;
@@ -130,6 +148,9 @@ h4 {
     color: $slate;
     width: 64px;
     height: 16px;
+    @include tablet {
+      display: none;
+    }
 
     &--ware {
       @include moP2;
@@ -167,4 +188,57 @@ h4 {
   justify-content: space-between;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
+}
+
+.sortBar {
+  display: none;
+  @include tablet {
+    display: flex;
+    background: rgba(247, 248, 249, 0.7);
+    width: 702px;
+    height: 40px;
+    margin-left: -2px;
+    justify-content: space-evenly;
+    align-items: center;
+
+    &__items {
+      @include dtH4;
+      color: $slate;
+      display: flex;
+    }
+
+    &__cat {
+      @include dtH4;
+      color: $slate;
+      display: flex;
+    }
+
+    &__status {
+      @include dtH4;
+      color: $slate;
+      display: flex;
+    }
+
+    &__qty {
+      @include dtH4;
+      color: $slate;
+      display: flex;
+    }
+
+    &__name {
+      @include dtH4;
+      color: $slate;
+      display: flex;
+    }
+
+    &__actions {
+      @include dtH4;
+      color: $slate;
+      display: flex;
+    }
+  }
+}
+
+.sortBtn {
+  width: 18px;
 }

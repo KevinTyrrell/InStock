@@ -4,6 +4,7 @@ import "./InventoryList.scss";
 import deleteBtn from "../../InStock Assets/Icons/delete_outline-24px.svg";
 import editBtn from "../../InStock Assets/Icons/edit-24px.svg";
 import itemArrow from "../../InStock Assets/Icons/chevron_right-24px.svg";
+import sortArrows from "../../InStock Assets/Icons/sort-24px.svg";
 
 export class InventoryList extends Component {
   state = {
@@ -36,6 +37,30 @@ export class InventoryList extends Component {
             <button id="addBtn">+ Add New Item</button>
           </div>
         </div>
+        <table>
+          <tr className="sortBar">
+            <th className="sortBar__items">
+              INVENTORY ITEM{" "}
+              <img className="sortBtn" src={sortArrows} alt="sort arrows" />
+            </th>
+            <th className="sortBar__cat">
+              CATEGORY{" "}
+              <img className="sortBtn" src={sortArrows} alt="sort arrows" />
+            </th>
+            <th className="sortBar__status">
+              STATUS{" "}
+              <img className="sortBtn" src={sortArrows} alt="sort arrows" />
+            </th>
+            <th className="sortBar__qty">
+              QTY <img className="sortBtn" src={sortArrows} alt="sort arrows" />
+            </th>
+            <th className="sortBar__name">
+              WAREHOUSE{" "}
+              <img className="sortBtn" src={sortArrows} alt="sort arrows" />
+            </th>
+            <h4 className="sortBar__actions">ACTIONS</h4>
+          </tr>
+        </table>
 
         {this.state.invData.map((inv) => {
           return (
