@@ -153,10 +153,11 @@ $out: #c94515;
   }
 }
 
-%input-radius {
-  border: 1px solid #BDC5D5;
+@mixin input-radius($color: $whites) {
+  border: 1px solid $cloud;
   box-sizing: border-box;
   border-radius: 20px;
+  background-color: $color;
 }
 %input {
   height: 2.25rem;

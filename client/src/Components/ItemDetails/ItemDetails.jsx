@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import './ItemDetails.scss'
+
 
 export class ItemDetails extends Component {
 

@@ -5,7 +5,7 @@
     
 
     &__input-radius{
-        @extend %input-radius;
+        @include input-radius;
         @extend %input;
     
 
@@ -16,7 +16,6 @@
     @extend %flex-column;
     @extend %section-pad;
     @extend %topdivider;
-    
 
 
         .section__title {

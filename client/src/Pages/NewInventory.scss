@@ -16,23 +16,45 @@
         box-sizing: border-box;
     }
 
+    .title__container-section{
+        padding: 2rem 1.5rem 1.5rem;
+        @extend %flex-row;
+
+        /* .icon {
+            height: 1rem;
+            width: 1rem;
+        } */
+    }
+
     &__title{
         @extend %h1;
         margin-block-end: 0;
         margin-block-start: 0;
         margin-top: 2rem;
-
     }
     
 
-    button {
-        @extend %input;
-        @extend %input-radius;
-
-    }
+    
 
     .button__container {
         @extend %flex-row;
+        padding: 1rem 1.5rem;
+        background: rgba(247, 248, 249, 0.7);
+        border-radius: 0px 0px 3px 3px;
+
+        .button {
+                @extend %input;
+                width: 8.688rem;
+                @include input-radius;
+                @extend %h3;
+                color: $slate;
+
+                &-submit{
+                @include input-radius($color: $stockIndigo);
+                color: $whites;
+                margin-left: 1rem;
+                }
+            }
     }
 
 
