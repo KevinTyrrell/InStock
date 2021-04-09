@@ -1,4 +1,4 @@
-@use '../partials/partial' as *;
+@use '../partials/partial'as *;
 
 .form {
     position: absolute;
@@ -13,14 +13,14 @@
     @extend %flex-column;
 
 
-    .title__container-section{
+    .title__container-section {
         padding: 2rem 1.5rem 1.5rem;
         @extend %flex-row;
         align-items: center;
 
     }
 
-    &__title{
+    &__title {
         @extend %h1;
         margin-block-end: 0;
         margin-block-start: 0;
@@ -58,10 +58,6 @@
             }
         }
 
-        .select{
-            appearance: none;
-            width: 100%;
-        }
 
         .status {
             @extend %flex-row;
@@ -75,9 +71,8 @@
             }
         }
 
-        input[type=text] {
+        input {
             @extend %innertext;
-
         }
 
         textarea {
@@ -85,8 +80,19 @@
             height: 7.5rem;
         }
 
-        select{
+        select {
             @extend %innertext;
+        }
+
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        /* Firefox */
+        input[type=number] {
+            -moz-appearance: textfield;
         }
 
     }
@@ -99,45 +105,49 @@
         border-radius: 0px 0px 3px 3px;
 
         .button {
-                @extend %input;
-                width: 8.688rem;
-                @include input-radius;
-                @extend %h3;
-                color: $slate;
+            @extend %input;
+            width: 8.688rem;
+            @include input-radius;
+            @extend %h3;
+            color: $slate;
 
-                &-submit{
+            &-submit {
                 @include input-radius($color: $stockIndigo);
                 color: $whites;
                 margin-left: 1rem;
-                }
             }
+        }
     }
 
     legend {
-    padding: 0;
-    display: table;
-  }
-  fieldset {
-    border: 0;
-    padding: 0.01em 0 0 0;
-    margin: 0;
-    min-width: 0;
-  }
-  body:not(:-moz-handler-blocked) fieldset {
-    display: table-cell;
-  }
+        padding: 0;
+        display: table;
+    }
 
-  input:focus {
-    @extend %roundedfocus;
-  }
+    fieldset {
+        border: 0;
+        padding: 0.01em 0 0 0;
+        margin: 0;
+        min-width: 0;
+    }
 
-  textarea:focus {
-    @extend %roundedfocus;
-  }
+    body:not(:-moz-handler-blocked) fieldset {
+        display: table-cell;
+    }
 
-  select:focus {
-      @extend %roundedfocus;
+    input:focus {
+        @extend %roundedfocus;
+    }
 
-  }
+    textarea:focus {
+        @extend %roundedfocus;
+    }
+
+    select:focus {
+        @extend %roundedfocus;
+    }
+
+    button:focus {
+        @extend %roundedfocus;
+    }
 }
-

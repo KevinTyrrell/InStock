@@ -1,34 +1,38 @@
 import React, { Component } from "react";
 
 export class ItemAvailability extends Component {
-	//FIXME: Radio button logic
 
 	state = {
-		showQuantity: true,
+		showQuantity: true
 	};
 
+	componentDidUpdate(prevProps, prevState) {
+
+		if(this.props.showQuantity !== prevProps.showQuantity ){
+
+			     this.setState((currentState) => ({
+				showQuantity: true,
+				
+			}));     	
+		}
+	}
+
 	render() {
-		const hideQuantity = (e) => {
 
-			if (this.state.showQuantity) {
+		const toggleQuantity = (e) => {
 
+			const { value } = e.target
+
+			if( value === "Out of Stock"){
 				this.setState((currentState) => ({
-					showQuantity: !currentState.showQuantity,
+					showQuantity: false,
 				}));
-				
-			}
-		};
-
-		const showQuantity = (e) => {
-
-			if (!this.state.showQuantity) {
-
-				this.setState((currentState) => ({
-					showQuantity: !currentState.showQuantity,
-				}));
-				
-			}
-		};
+		} else {
+			this.setState((currentState) => ({
+				showQuantity: true,
+			}));
+		}
+	}
 
 		return (
 			<section className='form__section'>
@@ -37,12 +41,13 @@ export class ItemAvailability extends Component {
 					Status
 				</label>
 				<fieldset className='status'>
-					<input onClick={showQuantity}
+					<input
+						onChange={toggleQuantity}
 						className='form__input'
 						type='radio'
 						name='status'
-						id='instock'
 						value='In Stock'
+                        defaultChecked
 					/>
 					<label
 						className='input__title-radio'
@@ -51,41 +56,48 @@ export class ItemAvailability extends Component {
 						In Stock
 					</label>
 					<input
-						onClick={hideQuantity}
+						onChange={toggleQuantity}
 						className='form__input'
 						type='radio'
 						name='status'
-						id='instock'
 						value='Out of Stock'
 					/>
 					<label className='input__title-radio' htmlFor='outofstock'>
 						Out of Stock
 					</label>
 				</fieldset>
-                { this.state.showQuantity ? (<div style={{display:"flex", flexDirection: "column" }}>
-				<label className='input__title' htmlFor='quantity'>
-					Quantity
-				</label>
-				<input
-					className='form__input-radius'
-					type='text'
-					placeholder='0'
-					name='quantity'
-				/></div>) : (<div style={{display: "none"}}>
-				<label className='input__title' htmlFor='quantity'>
-					Quantity
-				</label>
-				<input
-					className='form__input-radius'
-					type='text'
-					placeholder='0'
-					name='quantity'
-				/></div>) }
-				<label className='input__title' htmlFor='warehouse'>
+				{this.state.showQuantity ? (
+					<div style={{ display: "flex", flexDirection: "column" }}>
+						<label className='input__title' htmlFor='quantity'>
+							Quantity
+						</label>
+						<input
+							className='form__input-radius'
+							type="number"
+							placeholder='0'
+							min="1"
+							
+							name='quantity'
+						/>
+					</div>
+				) : (
+					<div style={{ display: "none" }}>
+						<label className='input__title' htmlFor='quantity'>
+							Quantity
+						</label>
+						<input
+							className='form__input-radius'
+							type="number"
+							placeholder='0'
+							min="1"
+							name='quantity'
+						/>
+					</div>
+				)}
+				<label className='input__title' htmlFor='warehouseName'>
 					Warehouse
 				</label>
-				<div className='select'>
-					<select className='form__input-radius' name='warehouse'>
+					<select className='form__input-radius' name='warehouseName'>
 						<option value='Please Select'>Please Select</option>
 						{this.props.warehouseList.map((warehouse, i) => {
 							return (
@@ -95,7 +107,6 @@ export class ItemAvailability extends Component {
 							);
 						})}
 					</select>{" "}
-				</div>
 			</section>
 		);
 	}
