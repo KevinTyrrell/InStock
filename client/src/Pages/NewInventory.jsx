@@ -29,12 +29,10 @@ let catArr = []
         
         response.data.forEach((item) => {
 
-             if(catArr.findIndex(category => category == item.category ) === -1){
+             if(catArr.findIndex(category => category === item.category ) === -1){
                 catArr.push(item.category)
-                console.log(`${item.category}`)
             } 
         })
-        console.log(...catArr)
         this.setState({categoryList: [...catArr] })
         
     }).catch( (err) => {console.log(err)})

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 
 
+
 export class ItemDetails extends Component {
 
     render() {
@@ -17,8 +18,8 @@ export class ItemDetails extends Component {
             <label className="input__title" htmlFor="category">Category</label>
                 <select className="form__input-radius" name="category">
                 <option value="Please Select">Please Select</option>
-                {this.props.categoryList.map( category=> {
-                        return (<option value={category}>{category}</option>)
+                {this.props.categoryList.map( (category, i)=> {
+                        return (<option key={i} value={category}>{category}</option>)
                     })}
                 </select>
         </section>

@@ -21,8 +21,8 @@ export class ItemAvailability extends Component {
             <label className="input__title" htmlFor="warehouse">Warehouse</label>
             <select className="form__input-radius" name="warehouse">
             <option value="Please Select">Please Select</option>
-            {this.props.warehouseList.map( warehouse => {
-                        return (<option value={warehouse.name}>{warehouse.name}</option>)
+            {this.props.warehouseList.map( (warehouse, i) => {
+                        return (<option key={i} value={warehouse.name}>{warehouse.name}</option>)
                     })}
             </select>
         </section>
