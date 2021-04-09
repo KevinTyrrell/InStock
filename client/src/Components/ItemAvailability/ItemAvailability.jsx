@@ -1,7 +1,25 @@
 import React, { Component } from 'react'
+import axios from 'axios'
 import './ItemAvailability.scss'
 
 export class ItemAvailability extends Component {
+
+    state = {
+        warehouseList: [],
+        categoryList: []
+    }
+
+componentDidMount() {
+    
+    axios.get("/warehouses")
+    .then( (response) => {
+        
+        this.setState({warehouseList: [...response.data] })
+            
+    
+    })
+    
+}
     render() {
         return (
         <section className="form__section">
@@ -15,10 +33,12 @@ export class ItemAvailability extends Component {
             </fieldset>
             <label className="input__title" htmlFor="quantity">Quantity</label>
                 <input className="form__input-radius" type="text" placeholder="0" name="quantity" />
-            <label className="input__title" htmlFor="item_description">Description</label>
-                <input className="form__input-radius" type="text" placeholder="Item Name" name="item_name" />
             <label className="input__title" htmlFor="warehouse">Warehouse</label>
             <select className="form__input-radius" name="warehouse">
+            <option value="Please Select">Please Select</option>
+            {this.state.warehouseList.map( warehouse => {
+                        return (<option value={warehouse.name}>{warehouse.name}</option>)
+                    })}
             </select>
         </section>
         )

@@ -29,6 +29,7 @@
 
             &-radio {
                 @include moP2;
+                text-align: center;
                 //padding: 0 5.563rem 0 0;
 
                 @include tablet {
@@ -56,6 +57,10 @@
         textarea {
             @extend %innertext;
             height: 7.5rem;
+        }
+
+        select{
+            @extend %innertext;
         }
 
     }
