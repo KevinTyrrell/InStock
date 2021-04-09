@@ -11,16 +11,27 @@ export class WarehouseDets extends Component {
     currWarehouse: null,
   };
 
+  state = {
+    currInventory: null,
+  };
+
   componentDidMount() {
     axios
       .get("/data/:warehouseId")
-      .then((res) => {
-        console.log("response successful");
-      })
+      .then((res) => this.setState({ currInventory: res.data }))
       .catch((err) => {
         console.log(err);
       });
   }
+
+  //   componentDidMount() {
+  //     axios
+  //       .get("/data/:warehouseId")
+  //       .then((res) => this.setState({ currInventory: res.data }))
+  //       .catch((err) => {
+  //         console.log(err);
+  //       });
+  //   }
 
   render() {
     return (
@@ -83,10 +94,11 @@ export class WarehouseDets extends Component {
             </div>
             <div>
               <h4 className="inv__qty">QTY</h4>
+              <h4 id="deskQty">QUANTITY</h4>
               <h4 className="inv__qty--amt">500</h4>
             </div>
           </div>
-          <div class="inv__icons">
+          <div className="inv__icons">
             <img src={deleteBtn} id="delete" alt="edit button" />
             <img src={editBtn} alt="edit button" />
           </div>

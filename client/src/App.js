@@ -12,10 +12,9 @@ class App extends React.Component {
     return (
       <Router>
         <Header />
-        <WarehouseDets />
         <Switch>
-          <Route path="/warehouses" exact component={WarehouseDets} />
-          {/* <Route path="/warehouses/:id" exact component={WarehouseDets} /> */}
+          <Route path="/warehouses" exact component={WarehousesList} />
+          <Route path="/warehouses/:id" exact component={WarehouseDets} />
 
           {/* <Route path="" component={}/>
          <Route path="" component={}/> */}

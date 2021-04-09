@@ -1,11 +1,5 @@
 @use '../../partials/partial' as *;
 
-// * {
-//   margin: 0;
-//   padding: 0;
-//   box-sizing: border-box;
-// }
-
 h4 {
   margin: 0;
 }
@@ -20,11 +14,17 @@ a {
 
 .warehouse {
   display: flex;
+  background-color: #ffffff;
   flex-direction: column;
-  width: 91.5%;
-  margin: auto;
+  //   width: 91.5%;
+  //   margin: auto;
   box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
   border-radius: 3px;
+  position: absolute;
+  left: 4.27%;
+  right: 4.27%;
+  top: 136px;
+  bottom: 4.95%;
 
   &__inline {
     display: flex;
@@ -38,6 +38,10 @@ a {
     @include moH1;
     color: $stockBlack;
     padding-left: 0.5rem;
+
+    @include tablet {
+      @include dtH1;
+    }
   }
 }
 
@@ -55,6 +59,11 @@ a {
     width: 114px;
     height: 16px;
     margin-bottom: 0.5rem;
+    @include tablet {
+      @include dtH4;
+      width: 125px;
+      height: 18px;
+    }
 
     &--loc {
       @include moP2;
@@ -62,6 +71,7 @@ a {
       width: 259px;
       height: 40px;
       @include tablet {
+        @include dtP2;
         width: 214px;
         height: 44px;
         padding-right: 2rem;
@@ -84,12 +94,20 @@ a {
     width: 79px;
     height: 16px;
     margin-bottom: 0.5rem;
+    @include tablet {
+      @include dtH4;
+      width: 87px;
+      height: 18px;
+    }
 
     &--pos {
       @include moP2;
       color: $stockBlack;
       width: 140px;
       height: 40px;
+      @include tablet {
+        @include dtP2;
+      }
     }
   }
 
@@ -103,10 +121,18 @@ a {
     width: 119px;
     height: 16px;
     margin-bottom: 0.5rem;
+    @include tablet {
+      @include dtH4;
+      width: 130px;
+      height: 18px;
+    }
 
     &--phone {
       @include moP2;
       color: $stockBlack;
+      @include tablet {
+        @include dtP2;
+      }
     }
   }
 }
@@ -124,6 +150,8 @@ a {
   padding-top: 1rem;
   @include tablet {
     border-top: none;
+    display: flex;
+    align-items: center;
   }
 
   &__inline {
@@ -136,6 +164,11 @@ a {
     color: $slate;
     width: 83px;
     height: 16px;
+    @include tablet {
+      @include dtH4;
+      width: 91px;
+      height: 18px;
+    }
 
     &--inline {
       display: flex;
@@ -145,6 +178,9 @@ a {
     &--prod {
       @include moH3;
       color: $stockIndigo;
+      @include tablet {
+        @include dtH3;
+      }
     }
   }
 
@@ -154,6 +190,11 @@ a {
     width: 37px;
     height: 16px;
     padding-bottom: 0.25rem;
+    @include tablet {
+      @include dtH4;
+      width: 40px;
+      height: 18px;
+    }
 
     &--inout {
       @include moH4;
@@ -161,6 +202,9 @@ a {
       border-radius: 20px;
       width: 61px;
       height: 24px;
+      @include tablet {
+        @include dtH4;
+      }
     }
   }
 
@@ -169,9 +213,17 @@ a {
     color: $slate;
     width: 51px;
     height: 16px;
+    @include tablet {
+      @include dtH4;
+      width: 56px;
+      height: 18px;
+    }
 
     &--type {
       @include moP2;
+      @include tablet {
+        @include dtP2;
+      }
     }
   }
 
@@ -180,9 +232,15 @@ a {
     color: $slate;
     width: 19px;
     height: 16px;
+    @include tablet {
+      display: none;
+    }
 
     &--amt {
       @include moP2;
+      @include tablet {
+        @include dtP2;
+      }
     }
   }
 
@@ -201,4 +259,16 @@ a {
 .itemInfo {
   display: flex;
   padding-top: 1.5rem;
+  @include tablet {
+    padding: 0;
+  }
+}
+
+#deskQty {
+  display: none;
+  @include tablet {
+    display: block;
+    @include dtH4;
+    color: $slate;
+  }
 }
