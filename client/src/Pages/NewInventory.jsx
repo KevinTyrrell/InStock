@@ -51,7 +51,7 @@ export class NewInventory extends Component {
 				warehouseName,
 				itemName,
 				description,
-                category,
+				category,
 				status,
 				quantity,
 			} = e.target;
@@ -62,7 +62,7 @@ export class NewInventory extends Component {
 				description: description.value,
 				category: category.value,
 				status: status.value,
-				quantity: status.value === "Out of Stock" ? 0 : quantity.value,
+				quantity: quantity.value || 0,
 			};
 
 			console.log(newItem);
@@ -81,11 +81,12 @@ export class NewInventory extends Component {
 					/>
 					<h1 className='form__title'>Add New Inventory Item</h1>
 				</div>
+                <div className='responsive'>
 				<ItemDetails categoryList={this.state.categoryList} />
 				<ItemAvailability
 					warehouseList={this.state.warehouseList}
 					showQuantity={this.state.submitted}
-				/>
+				/></div>
 				<div className='button__container'>
 					<button className='button button-cancel'>Cancel</button>
 					<button

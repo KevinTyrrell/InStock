@@ -28,8 +28,8 @@ export class ItemDetails extends Component {
 				<label className='input__title' htmlFor='category'>
 					Category
 				</label>
-				<select className='form__input-radius' name='category'>
-					<option value='Please Select'>Please Select</option>
+				<select className='form__input-radius' name='category' required>
+					<option value='' >Please Select</option>
 					{this.props.categoryList.map((category, i) => {
 						return (
 							<option key={i} value={category}>

@@ -12,7 +12,15 @@
     height: min-content;
     @extend %flex-column;
 
+    .responsive{
 
+        width: 100%;
+
+        @include tablet {
+            display: flex;
+            border-top: 1px solid $cloud;
+        }
+    }
     .title__container-section {
         padding: 2rem 1.5rem 1.5rem;
         @extend %flex-row;
@@ -36,6 +44,16 @@
         @extend %flex-column;
         @extend %section-pad;
         @extend %topdivider;
+
+        @include tablet {
+                border: none;
+                width: 50%;
+                margin: 1.5rem 0;
+        }
+
+        &-details {
+            border-right: 1px solid $cloud;
+        }
 
 
         .section__title {

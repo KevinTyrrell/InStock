@@ -76,8 +76,8 @@ export class ItemAvailability extends Component {
 							type="number"
 							placeholder='0'
 							min="1"
-							
 							name='quantity'
+							required
 						/>
 					</div>
 				) : (
@@ -91,14 +91,15 @@ export class ItemAvailability extends Component {
 							placeholder='0'
 							min="1"
 							name='quantity'
+							required
 						/>
 					</div>
 				)}
 				<label className='input__title' htmlFor='warehouseName'>
 					Warehouse
 				</label>
-					<select className='form__input-radius' name='warehouseName'>
-						<option value='Please Select'>Please Select</option>
+					<select className='form__input-radius' name='warehouseName' required>
+						<option value=''>Please Select</option>
 						{this.props.warehouseList.map((warehouse, i) => {
 							return (
 								<option key={i} value={warehouse.name}>
