@@ -3,8 +3,9 @@ import "./App.scss";
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import WarehousesList from "./components/WarehousesList/WarehousesList";
-import Header from './Components/Header/Header';
-import Footer from './Components/Footer/Footer';
+import InventoryList from "./components/InventoryList/InventoryList";
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
 
 class App extends React.Component {
   render() {
@@ -13,9 +14,9 @@ class App extends React.Component {
         <Header />
         <Switch>
           <Route path="/warehouses" exact component={WarehousesList} />
-          {/* <Route path="" component={}/>
-         <Route path="" component={}/>
-         <Route path="" component={}/> */}
+          {/* <Route path="" component={}/> */}
+          <Route path="/inventories" exact component={InventoryList} />
+          {/* <Route path="" component={}/> */}
         </Switch>
         <Footer />
       </Router>
