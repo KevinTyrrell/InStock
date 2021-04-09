@@ -8,7 +8,7 @@ export class ItemDetails extends Component {
 					Item Name
 				</label>
 				<input
-					className='form__input-radius'
+					className='form__input-radius c-error c-validation'
 					type='text'
 					placeholder='Item Name'
 					name='itemName'
@@ -28,7 +28,7 @@ export class ItemDetails extends Component {
 				<label className='input__title' htmlFor='category'>
 					Category
 				</label>
-				<select className='form__input-radius' name='category' required>
+				<select className='form__input-radius form__input-drop' name='category' required>
 					<option value='' >Please Select</option>
 					{this.props.categoryList.map((category, i) => {
 						return (

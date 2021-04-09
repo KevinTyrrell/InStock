@@ -38,12 +38,30 @@
         @include input-radius;
         @extend %input;
     }
+    &__input-drop {
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10L12 15L17 10H7Z' fill='%235C667E'/%3E%3C/svg%3E%0A");
+        background-repeat: no-repeat;
+        background-size: 1.8rem;
+        background-position: center right 1em;
+
+    }
 
     &__section {
         height: min-content;
         @extend %flex-column;
         @extend %section-pad;
         @extend %topdivider;
+
+        .c-error .c-validation{
+            background: #c51244 !important;
+            padding: 10px !important;
+            border-radius: 0 !important;
+            position: relative; 
+            display: inline-block !important;
+            box-shadow: 1px 1px 1px #aaaaaa;
+            margin-top: 10px;
+          }
 
         @include tablet {
                 border: none;
@@ -122,6 +140,12 @@
         background: rgba(247, 248, 249, 0.7);
         border-radius: 0px 0px 3px 3px;
 
+        @include tablet {
+            height: 4.375rem;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
         .button {
             @extend %input;
             width: 8.688rem;
@@ -129,28 +153,22 @@
             @extend %h3;
             color: $slate;
 
+            @include tablet {
+                height: 2.375rem;
+                width: 4.5rem;
+            }
+
             &-submit {
                 @include input-radius($color: $stockIndigo);
                 color: $whites;
                 margin-left: 1rem;
+
+                @include tablet {
+                    width: 6.125rem;
+                }
+
             }
         }
-    }
-
-    legend {
-        padding: 0;
-        display: table;
-    }
-
-    fieldset {
-        border: 0;
-        padding: 0.01em 0 0 0;
-        margin: 0;
-        min-width: 0;
-    }
-
-    body:not(:-moz-handler-blocked) fieldset {
-        display: table-cell;
     }
 
     input:focus {
@@ -168,4 +186,22 @@
     button:focus {
         @extend %roundedfocus;
     }
+
+    ////Removing Default Styling
+    legend {
+        padding: 0;
+        display: table;
+    }
+
+    fieldset {
+        border: 0;
+        padding: 0.01em 0 0 0;
+        margin: 0;
+        min-width: 0;
+    }
+
+    body:not(:-moz-handler-blocked) fieldset {
+        display: table-cell;
+    }
 }
+

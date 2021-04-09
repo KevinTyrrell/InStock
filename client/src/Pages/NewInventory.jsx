@@ -12,6 +12,9 @@ export class NewInventory extends Component {
 		warehouseList: [],
 		categoryList: [],
 		submitted: false,
+        errors: {
+            
+        },
 	};
 
 	componentDidMount() {

@@ -98,7 +98,7 @@ export class ItemAvailability extends Component {
 				<label className='input__title' htmlFor='warehouseName'>
 					Warehouse
 				</label>
-					<select className='form__input-radius' name='warehouseName' required>
+					<select className='form__input-radius form__input-drop' name='warehouseName' required>
 						<option value=''>Please Select</option>
 						{this.props.warehouseList.map((warehouse, i) => {
 							return (
