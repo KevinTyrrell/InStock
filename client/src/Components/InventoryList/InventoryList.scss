@@ -1,9 +1,170 @@
 @use '../../partials//partial' as *;
 
-.inventories {
-  padding-top: 200px;
+h4 {
+  margin: 0;
 }
 
-.test {
-  background-color: red;
+.inventories {
+  display: flex;
+  background-color: #ffffff;
+  flex-direction: column;
+  box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
+  border-radius: 3px;
+  position: absolute;
+  left: 4.27%;
+  right: 4.27%;
+  top: 136px;
+
+  &__header {
+    padding-left: 1.5rem;
+    @include tablet {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-right: 1.5rem;
+    }
+  }
+
+  &__title {
+    @include moH1;
+  }
+}
+
+#invSearch {
+  border: 1px solid #bdc5d5;
+  box-sizing: border-box;
+  border-radius: 20px;
+  width: 295px;
+  height: 36px;
+  @include moP2;
+  padding-left: 1rem;
+  @include tablet {
+    width: 185px;
+    height: 38px;
+    margin-right: 1rem;
+  }
+}
+
+#addBtn {
+  width: 295px;
+  height: 36px;
+  background: $stockIndigo;
+  border: none;
+  border-radius: 20px;
+  color: #ffffff;
+  @include moH3;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+  @include tablet {
+    margin: 0;
+    width: 128px;
+    height: 38px;
+  }
+}
+
+.allInv {
+  border-top: 1px solid $cloud;
+  margin-bottom: 1.5rem;
+
+  &__items {
+    @include moH4;
+    color: $slate;
+    width: 83px;
+    height: 16px;
+
+    &--item {
+      @include moH3;
+      color: $stockIndigo;
+    }
+  }
+
+  &__status {
+    @include moH4;
+    color: $slate;
+    width: 37px;
+    height: 16px;
+
+    &--inOut {
+      @include moH4;
+      color: $in;
+    }
+
+    &--fix {
+      margin-left: 73px;
+    }
+  }
+
+  &__cat {
+    @include moH4;
+    color: $slate;
+    width: 51px;
+    height: 16px;
+
+    &--label {
+      @include moP2;
+      color: $stockBlack;
+      width: 140px;
+      height: 20px;
+    }
+  }
+
+  &__qty {
+    @include moH4;
+    color: $slate;
+    width: 19px;
+    height: 16px;
+
+    &--num {
+      @include moP2;
+      color: $stockBlack;
+    }
+
+    &--fix {
+      margin-left: 1rem;
+      margin-bottom: 1rem;
+    }
+  }
+
+  &__name {
+    @include moH4;
+    color: $slate;
+    width: 64px;
+    height: 16px;
+
+    &--ware {
+      @include moP2;
+      color: $stockBlack;
+      height: 20px;
+    }
+  }
+}
+
+.itemStatus {
+  display: flex;
+  margin-left: 1.5rem;
+  margin-top: 1rem;
+}
+
+.catQty {
+  display: flex;
+  margin-left: 1.5rem;
+  margin-top: 1rem;
+}
+
+.itemArrow {
+  display: flex;
+  align-items: center;
+}
+
+.warehouseName {
+  display: flex;
+  flex-direction: column;
+  margin-left: 180px;
+}
+
+.invBtns {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
