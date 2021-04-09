@@ -4,7 +4,7 @@
     position: absolute;
     left: 4.27%;
     right: 4.27%;
-    top: 15%;
+    top: 10%;
     bottom: 8.68%;
     background: $whites;
     box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
@@ -12,9 +12,6 @@
     height: min-content;
     @extend %flex-column;
 
-    /* * {
-        box-sizing: border-box;
-    } */
 
     .title__container-section{
         padding: 2rem 1.5rem 1.5rem;
@@ -59,6 +56,11 @@
                     @include dtP2;
                 }
             }
+        }
+
+        .select{
+            appearance: none;
+            width: 100%;
         }
 
         .status {
@@ -110,9 +112,8 @@
                 }
             }
     }
-}
 
-legend {
+    legend {
     padding: 0;
     display: table;
   }
@@ -127,13 +128,16 @@ legend {
   }
 
   input:focus {
-      outline: 0;
-      border-radius: 20px;
-    border: 2px solid $stockIndigo;
+    @extend %roundedfocus;
   }
 
   textarea:focus {
-      outline: 0;
-      border-radius: 20px;
-    border: 2px solid $stockIndigo;
+    @extend %roundedfocus;
   }
+
+  select:focus {
+      @extend %roundedfocus;
+
+  }
+}
+

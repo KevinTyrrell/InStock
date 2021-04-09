@@ -220,5 +220,11 @@ $out: #c94515;
   @include tablet {
     @include dtP2;
   }
+}
+
+%roundedfocus {
+  outline: 0;
+  border-radius: 20px;
+  border: 2px solid $stockIndigo;
 
 }
