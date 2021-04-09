@@ -37,6 +37,7 @@ let catArr = []
         
     }).catch( (err) => {console.log(err)})
 }
+//TODO: Add type submit to buttons
 
     
     render() {
@@ -50,7 +51,7 @@ let catArr = []
                 <ItemAvailability warehouseList={this.state.warehouseList}/>
                 <div className="button__container">
                     <button className="button button-cancel">Cancel</button>
-                    <button className="button button-submit">+ Add Item</button>
+                    <button type="" className="button button-submit">+ Add Item</button>
                 </div>
 
             </div>
