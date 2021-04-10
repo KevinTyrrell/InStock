@@ -12,7 +12,7 @@ export class NewInventory extends Component {
 		warehouseList: [],
 		categoryList: [],
 		submitted: false,
-        errors: false
+		errors: false,
 	};
 
 	componentDidMount() {
@@ -45,8 +45,6 @@ export class NewInventory extends Component {
 	}
 
 	render() {
-
-
 		const submitHandler = (e) => {
 			e.preventDefault();
 
@@ -59,27 +57,25 @@ export class NewInventory extends Component {
 				quantity,
 			} = e.target;
 
-        if(itemName.value == "") {
-            this.setState({errors: true})
-        }else{
+			if (itemName.value == "") {
+				this.setState({ errors: true });
+				console.log(`NI errors: ${this.state.errors}`);
+			} else {
+				const newItem = {
+					warehouseName: warehouseName.value,
+					itemName: itemName.value,
+					description: description.value,
+					category: category.value,
+					status: status.value,
+					quantity: status.value === "In Stock" ? quantity.value : 0,
+				};
 
-			const newItem = {
-				warehouseName: warehouseName.value,
-				itemName: itemName.value,
-				description: description.value,
-				category: category.value,
-				status: status.value,
-				quantity: quantity.value || 0,
-			};
+				console.log(newItem);
+				this.setState({ submitted: true, errors: false });
 
-			console.log(newItem);
-			this.setState({ submitted: true });
-
-			e.target.reset();
+				e.target.reset();
+			}
 		};
-    }
-
-
 
 		return (
 			<form onSubmit={submitHandler} className='form'>
@@ -92,12 +88,18 @@ export class NewInventory extends Component {
 					/>
 					<h1 className='form__title'>Add New Inventory Item</h1>
 				</div>
-                <div className='responsive'>
-				<ItemDetails categoryList={this.state.categoryList} error={this.state.errors} reset={this.state.submitted}   />
-				<ItemAvailability
-					warehouseList={this.state.warehouseList}
-					showQuantity={this.state.submitted} error={this.state.errors}
-				/></div>
+				<div className='responsive'>
+					<ItemDetails
+						categoryList={this.state.categoryList}
+						submitted={this.state.submitted}
+						errors={this.state.errors}
+					/>
+					<ItemAvailability
+						warehouseList={this.state.warehouseList}
+						submitted={this.state.submitted}
+						errors={this.state.errors}
+					/>
+				</div>
 				<div className='button__container'>
 					<button className='button button-cancel'>Cancel</button>
 					<button

@@ -3,12 +3,21 @@ import React, { Component } from "react";
 export class ItemAvailability extends Component {
 	state = {
 		showQuantity: true,
+		showError: this.props.errors
 	};
 
 	componentDidUpdate(prevProps, prevState) {
-		if (this.props.showQuantity !== prevProps.showQuantity) {
+
+		if (this.props.submitted !== prevProps.submitted) {
 			this.setState((currentState) => ({
 				showQuantity: true,
+				showError: !this.state.showError
+			}));
+		}
+
+		if (this.props.errors !== prevProps.errors) {
+			this.setState((currentState) => ({
+				showError: !this.state.showError
 			}));
 		}
 	}
@@ -67,7 +76,7 @@ export class ItemAvailability extends Component {
 						</label>
 						<input
 							className={
-								this.props.error
+								this.state.showError
 									? "form__input-radius error"
 									: "form__input-radius"
 							}
@@ -78,7 +87,7 @@ export class ItemAvailability extends Component {
 						/>
 						<label
 							className='error__message'
-							style={{ display: !this.props.error ? "none" : "inline" }}
+							style={{ display: this.state.showError ? "flex" : "none" }}
 							htmlFor='quantity'>
 							This field is required
 						</label>
@@ -91,7 +100,7 @@ export class ItemAvailability extends Component {
 				</label>
 				<select
 					className={
-						this.props.error
+						this.state.showError
 							? "form__input-radius form__input-drop error"
 							: "form__input-radius form__input-drop"
 					}
@@ -107,7 +116,7 @@ export class ItemAvailability extends Component {
 				</select>
 				<label
 					className='error__message'
-					style={{ display: !this.props.error ? "none" : "inline" }}
+					style={{ display: this.state.showError ? "flex" : "none" }}
 					htmlFor='warehouseName'>
 					This field is required
 				</label>

@@ -12,6 +12,7 @@
     height: min-content;
     @extend %flex-column;
 
+
     .responsive{
 
         width: 100%;
@@ -53,15 +54,31 @@
         @extend %section-pad;
         @extend %topdivider;
 
-        .erfror{
-            background: #c51244 !important;
-            padding: 10px !important;
-            border-radius: 0 !important;
-            position: relative; 
-            display: inline-block !important;
-            box-shadow: 1px 1px 1px #aaaaaa;
-            margin-top: 10px;
-          }
+        .error{
+            border: 1px solid $out;
+    
+            &__message {
+                display: flex;
+                align-items: center;
+                @extend %p3;
+                color: $out;
+                height: 0.833rem;
+                padding-top: .25rem;
+            }
+    
+            &__message::before {
+                display: inline-block;
+                position: relative;
+                content: ' ';
+                background-size: 0.833rem 0.833rem;
+                background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM13 17H11V15H13V17ZM13 13H11V7H13V13Z' fill='%23C94515'/%3E%3C/svg%3E%0A");
+                background-repeat: no-repeat;
+                height: 0.833rem;
+                width: 0.833rem;
+                margin-right: 0.331rem;
+            }
+        }
+
 
         @include tablet {
                 border: none;
@@ -204,27 +221,4 @@
         display: table-cell;
     }
 
-    .error{
-        border: 1px solid $out;
-
-        &__message {
-            @extend %p3;
-            color: $out;
-            height: 1.125rem;
-        }
-
-        &__message::before {
-            display: inline-block;
-            position: relative;
-            content: ' ';
-            background-size: 0.833rem 0.833rem;
-            background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM13 17H11V15H13V17ZM13 13H11V7H13V13Z' fill='%23C94515'/%3E%3C/svg%3E%0A");
-            background-repeat: no-repeat;
-            height: 0.833rem;
-            width: 0.833rem;
-            top: 5px;
-            margin-right: 0.331rem;
-        }
-    }
 }
-

@@ -2,19 +2,22 @@ import React, { Component } from "react";
 export class ItemDetails extends Component {
 
 	state = {
-		showRequired: false
+		showError: this.props.errors
 	};
-
 
 
 	componentDidUpdate(prevProps, prevState) {
 
-		if(this.props.showQuantity !== prevProps.showQuantity ){
+		if (this.props.submitted !== prevProps.submitted) {
+			this.setState((currentState) => ({
+				showError: !this.state.showError
+			}));
+		}
 
-			     this.setState((currentState) => ({
-				showQuantity: true,
-				
-			}));     	
+		if (this.props.errors !== prevProps.errors) {
+			this.setState((currentState) => ({
+				showError: !this.state.showError
+			}));
 		}
 	}
 
@@ -26,13 +29,13 @@ export class ItemDetails extends Component {
 					Item Name
 				</label>
 				<input
-					className={this.props.error ? "form__input-radius error" : "form__input-radius"}
+					className={this.state.showError ? "form__input-radius error" : "form__input-radius"}
 					type='text'
 					placeholder='Item Name'
 					name='itemName'
 					
 				/>
-				<label className="error__message" style={{ display: !this.props.error ? "none" : "inline"}} htmlFor='itemName'>
+				<label className="error__message" style={{ display: this.state.showError ? "flex" : "none" }} htmlFor='itemName'>
 					This field is required
 				</label>
 				<label className='input__title' htmlFor='description'>
@@ -40,18 +43,18 @@ export class ItemDetails extends Component {
 				</label>
 				<textarea
 					style={{ resize: "none" }}
-					className={this.props.error ? "form__input-radius error" : "form__input-radius"}
+					className={this.state.showError ? "form__input-radius error" : "form__input-radius"}
 					type='text'
 					placeholder='Please enter a brief item description...'
 					name='description'
 					
-				/><label className="error__message" style={{ display: !this.props.error ? "none" : "inline"}} htmlFor='description'>
+				/><label className="error__message" style={{ display: this.state.showError ? "flex" : "none" }} htmlFor='description'>
 					This field is required
 				</label>
 				<label className='input__title' htmlFor='category'>
 					Category
 				</label>
-				<select className={this.props.error ? 'form__input-radius form__input-drop error' : 'form__input-radius form__input-drop'} name='category' >
+				<select className={this.state.showError ? 'form__input-radius form__input-drop error' : 'form__input-radius form__input-drop'} name='category' >
 					<option value='' >Please Select</option>
 					{this.props.categoryList.map((category, i) => {
 						return (
@@ -61,7 +64,7 @@ export class ItemDetails extends Component {
 						);
 					})}
 				</select>
-				<label className="error__message" style={{ display: !this.props.error ? "none" : "inline"}} htmlFor='category'>
+				<label className="error__message" style={{ display: this.state.showError ? "flex" : "none" }} htmlFor='category'>
 					This field is required
 				</label>
 			</section>
