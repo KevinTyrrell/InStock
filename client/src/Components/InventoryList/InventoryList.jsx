@@ -60,45 +60,59 @@ export class InventoryList extends Component {
             </th>
             <h4 className="sortBar__actions">ACTIONS</h4>
           </tr>
-        </table>
 
-        {this.state.invData.map((inv) => {
-          return (
-            <div className="allInv">
-              <div className="itemStatus">
-                <div>
-                  <h4 className="allInv__items">INVENTORY ITEM</h4>
-                  <div className="itemArrow">
-                    <h4 className="allInv__items--item">{inv.itemName}</h4>
+          {this.state.invData.map((inv) => {
+            return (
+              <div className="allInv">
+                <tr className="sortItems">
+                  <td className="sortItems__name">
+                    {inv.itemName}
                     <img src={itemArrow} alt="item info" />
+                  </td>
+                  <td className="sortItems__cat">{inv.category}</td>
+                  <td className="sortItems__stat">{inv.status}</td>
+                  <td className="sortItems__qty">{inv.quantity}</td>
+                  <td className="sortItems__ware">{inv.warehouseName}</td>
+                  <td>
+                    <img id src={deleteBtn} alt="delete button" />
+                    <img src={editBtn} alt="edit button" />
+                  </td>
+                </tr>
+                <div className="itemStatus">
+                  <div>
+                    <h4 className="allInv__items">INVENTORY ITEM</h4>
+                    <div className="itemArrow">
+                      <h4 className="allInv__items--item">{inv.itemName}</h4>
+                      <img src={itemArrow} alt="item info" />
+                    </div>
+                  </div>
+                  <div className="allInv__status--fix">
+                    <h4 className="allInv__status">STATUS</h4>
+                    <h4 className="allInv__status--inOut">{inv.status}</h4>
                   </div>
                 </div>
-                <div className="allInv__status--fix">
-                  <h4 className="allInv__status">STATUS</h4>
-                  <h4 className="allInv__status--inOut">{inv.status}</h4>
+                <div className="catQty">
+                  <div>
+                    <h4 className="allInv__cat">CATEGORY</h4>
+                    <h4 className="allInv__cat--label">{inv.category}</h4>
+                  </div>
+                  <div className="allInv__qty--fix">
+                    <h4 className="allInv__qty">QTY</h4>
+                    <h4 className="allInv__qty--num">{inv.quantity}</h4>
+                  </div>
+                </div>
+                <div className="warehouseName">
+                  <h4 className="allInv__name">WAREHOUSE</h4>
+                  <h4 className="allInv__name--ware">{inv.warehouseName}</h4>
+                </div>
+                <div className="invBtns">
+                  <img src={deleteBtn} alt="delete button" />
+                  <img className="editButton" src={editBtn} alt="edit button" />
                 </div>
               </div>
-              <div className="catQty">
-                <div>
-                  <h4 className="allInv__cat">CATEGORY</h4>
-                  <h4 className="allInv__cat--label">{inv.category}</h4>
-                </div>
-                <div className="allInv__qty--fix">
-                  <h4 className="allInv__qty">QTY</h4>
-                  <h4 className="allInv__qty--num">{inv.quantity}</h4>
-                </div>
-              </div>
-              <div className="warehouseName">
-                <h4 className="allInv__name">WAREHOUSE</h4>
-                <h4 className="allInv__name--ware">{inv.warehouseName}</h4>
-              </div>
-              <div className="invBtns">
-                <img src={deleteBtn} alt="delete button" />
-                <img src={editBtn} alt="edit button" />
-              </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </table>
       </section>
     );
   }
