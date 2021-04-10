@@ -152,3 +152,86 @@ $out: #c94515;
     @content;
   }
 }
+
+@mixin input-radius($color: $whites) {
+  border: 1px solid $cloud;
+  box-sizing: border-box;
+  border-radius: 20px;
+  background-color: $color;
+}
+%input {
+  height: 2.25rem;
+}
+
+%flex-column {
+  display: flex;
+  flex-direction: column;
+}
+%flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+%h1 {
+     @include moH1;
+
+   @include tablet {
+     @include dtH1;
+   }
+}
+
+%h2 {
+     @include moH2;
+
+   @include tablet {
+     @include dtH2;
+   }
+}
+
+%h3 {
+     @include moH3;
+
+   @include tablet {
+     @include dtH3;
+   }
+}
+%p3 {
+     @include moP3;
+
+   @include tablet {
+     @include dtP3;
+   }
+}
+
+%section-pad {
+    padding: 1rem 1.5rem 1.5rem;
+
+  @include tablet {
+    padding: 0 2rem;
+  }
+
+  @include desktop {
+    padding: 0 2.5rem;
+  }
+
+}
+
+%topdivider {
+  border-top: 1px solid $cloud;
+}
+
+%innertext {
+  padding: .5rem 1rem;
+  @include moP2;
+
+  @include tablet {
+    @include dtP2;
+  }
+}
+
+%roundedfocus {
+  outline: 0;
+  border-radius: 20px;
+  border: 2px solid $stockIndigo;
+
+}

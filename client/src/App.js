@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import WarehousesList from "./Components/WarehousesList/WarehousesList";
 import Header from './Components/Header/Header';
 import Footer from './Components/Footer/Footer';
+import NewInventory from './Pages/NewInventory'
 
 class App extends React.Component {
   render() {
@@ -12,8 +13,9 @@ class App extends React.Component {
       <Router>
         <Header />
         <Switch>
-          <Route path="/warehouses" exact component={WarehousesList} />
-          {/* <Route path="" component={}/>
+        <Route exact path="/newinventory" component={NewInventory} />
+          {/*<Route path="/warehouses" exact component={WarehousesList} />
+           <Route path="" component={}/>
          <Route path="" component={}/>
          <Route path="" component={}/> */}
         </Switch>
