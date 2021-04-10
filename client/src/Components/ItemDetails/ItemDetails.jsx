@@ -10,26 +10,17 @@ export class ItemDetails extends Component {
 	componentDidUpdate(prevProps, prevState) {
 
 		if (this.props.submitted !== prevProps.submitted) {
-			this.setState((currentState) => ({
+			this.setState({
 				showError: !this.state.showError
-			}));
-		}
-
-		if (this.props.errors !== prevProps.errors) {
-			this.setState((currentState) => ({
-				showError: !this.state.showError
-			}));
+			})
 		}
 
 		//////////////////////////////
-		if (JSON.stringify(this.props.testErrors) !== JSON.stringify(prevProps.testErrors) ) {
-			console.log(this.props.testErrors)
-			
-			console.log(prevProps.testErrors)
-			
-			this.setState((currentState) => ({
+		if (this.props.testErrors !== prevProps.testErrors ) {
+
+			this.setState({
 				showErrors: {...this.props.testErrors}
-			}));
+			})
 		}
 	}
 

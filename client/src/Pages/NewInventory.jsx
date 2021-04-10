@@ -17,6 +17,7 @@ export class NewInventory extends Component {
             itemName: false,
             description: false,
             category: false,
+			quantity: false,
             warehouseName: false
         }
 	};
@@ -63,13 +64,18 @@ export class NewInventory extends Component {
 				quantity,
 			} = e.target;
 
-    if( itemName.value === "" || description.value === "" || category.value === "" ||warehouseName.value === "") {
 
+    if( itemName.value === "" || description.value === "" || category.value === ""  || category.value === "" || warehouseName.value === "") {
+
+
+			if(status.value == "Out of Stock") quantity.value = 0;
+			
 		this.setState({testErrors: {
 			itemName: itemName.value === "" ?  true : false,
 			description: description.value === "" ? true : false,
 			category: category.value === "" ? true : false,
-			warehouseName: warehouseName.value === "Please Select" ? true : false
+			quantity: quantity.value === "" ? true : false,
+			warehouseName: warehouseName.value === "" ? true : false
 		}})
 			
             
@@ -89,6 +95,7 @@ export class NewInventory extends Component {
                     itemName: false,
                     description: false,
                     category: false,
+					quantity: false,
                     warehouseName: false
                 }})
 

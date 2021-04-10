@@ -3,37 +3,42 @@ import React, { Component } from "react";
 export class ItemAvailability extends Component {
 	state = {
 		showQuantity: true,
-		showError: this.props.errors
+		showError: this.props.errors,
+		showErrors: this.props.testErrors
 	};
 
 	componentDidUpdate(prevProps, prevState) {
 
 		if (this.props.submitted !== prevProps.submitted) {
-			this.setState((currentState) => ({
+			this.setState({
 				showQuantity: true,
 				showError: !this.state.showError
-			}));
+			})
 		}
 
-		if (this.props.errors !== prevProps.errors) {
-			this.setState((currentState) => ({
-				showError: !this.state.showError
-			}));
+		if (this.props.testErrors !== prevProps.testErrors ) {
+
+			this.setState({
+				showErrors: {...this.props.testErrors}
+			})
 		}
 	}
 
 	render() {
+
 		const toggleQuantity = (e) => {
 			const { value } = e.target;
 
+
+			//{TODO://ternary statment}
 			if (value === "Out of Stock") {
-				this.setState((currentState) => ({
+				this.setState({
 					showQuantity: false,
-				}));
+				})
 			} else {
-				this.setState((currentState) => ({
+				this.setState({
 					showQuantity: true,
-				}));
+				})
 			}
 		};
 
@@ -76,7 +81,7 @@ export class ItemAvailability extends Component {
 						</label>
 						<input
 							className={
-								this.state.showError
+								this.state.showErrors.quantity
 									? "form__input-radius error"
 									: "form__input-radius"
 							}
@@ -87,7 +92,7 @@ export class ItemAvailability extends Component {
 						/>
 						<label
 							className='error__message'
-							style={{ display: this.state.showError ? "flex" : "none" }}
+							style={{ display: this.state.showErrors.quantity ? "flex" : "none" }}
 							htmlFor='quantity'>
 							This field is required
 						</label>
@@ -100,7 +105,7 @@ export class ItemAvailability extends Component {
 				</label>
 				<select
 					className={
-						this.state.showError
+						this.state.showErrors.warehouseName
 							? "form__input-radius form__input-drop error"
 							: "form__input-radius form__input-drop"
 					}
@@ -116,7 +121,7 @@ export class ItemAvailability extends Component {
 				</select>
 				<label
 					className='error__message'
-					style={{ display: this.state.showError ? "flex" : "none" }}
+					style={{ display: this.state.showErrors.warehouseName ? "flex" : "none" }}
 					htmlFor='warehouseName'>
 					This field is required
 				</label>
