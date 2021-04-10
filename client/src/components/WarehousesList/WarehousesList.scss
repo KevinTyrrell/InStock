@@ -1,0 +1,387 @@
+@use '../../partials/partial' as *;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.warehouses {
+    position: absolute;
+    background-color: white;
+    z-index: 10;
+    max-width: 21.4rem;
+    margin: auto;
+    margin-bottom: 1.5rem;
+    font-family: "Titillium Web";
+    color: $stockBlack;
+    top: 12%;
+    left: 5%;
+
+    @include tablet {
+        max-width: 44rem;
+        margin: auto;
+        top: 11%;
+        left: 4%;
+    }
+
+    @include desktop {
+        height: 672px;
+        max-width: 63.75rem;
+        margin: auto;
+        left: 15.16%;
+        top: 10.95%;
+    }
+
+        &__wrapperOne {
+            margin: 0 1.5rem;
+
+            @include tablet {
+                display: flex;
+                align-items: center;
+                width: 44rem;
+                margin-bottom: .5rem;
+            }
+            @include desktop {
+                width: 63.75rem;
+                margin-left: 2.5rem;
+            
+            }
+        }
+       
+        &__title {
+            @include moH1;
+            padding: 2rem 10.6rem 1rem 0;
+            color: $stockBlack;
+
+            @include tablet {
+                padding-right: 8.6rem;
+            }
+
+            @include desktop {
+                padding-right: 21rem;
+                // marg-right: 10rem;
+            }
+         }
+
+
+         &__search {
+            width: 17rem;
+            height: 2.25rem;
+            border-radius: 1.25rem;
+            border: none;
+            border: 1px solid $cloud;
+            background-image: url('../../assets/Icons/search-24px.svg');
+            background-repeat: no-repeat;
+            background-position-x: 14.5rem;
+            background-position-y: center;
+            padding-left: 1rem;
+            margin-bottom: 1rem;
+
+            @include tablet {
+                margin-top: 2rem;
+                width: 11.6rem;
+                margin-right: 1rem;
+                background-position-x: 9rem;
+            }
+
+            @include desktop {
+                width: 274px;
+                background-position-x: 14.5rem;
+            }
+         }
+
+         &__button {
+             width: 17rem;
+             height: 2.25rem;
+             border-radius: 1.25rem;
+             border: none;
+             background-color: $stockIndigo;
+             color: white;
+
+             @include tablet {
+                 margin-top: 1rem;
+                 width: 10.5rem;
+             }
+         }
+
+         &__row-headers {
+             display: none;
+
+             @include tablet {
+                display: block;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: $slate;
+                background-color: $lightgrey;
+                width: 702px;
+                height: 45px;
+                margin-right: 0;
+                padding-left: 1.1rem;
+                @include dtH4;
+
+                div {
+                    display: flex;
+                    // width: 150px;
+                }
+             }
+             @include desktop {
+                 width: 1020px;
+                 justify-content: space-between;
+                 padding-right: 1.8rem;
+                 padding-left: 2.5rem;
+             }
+             
+         }
+
+        
+
+         &__header1 {
+             @include tablet {
+                 width: 80px;
+                 margin-right: 3.2rem;
+                //  margin-left: .2rem;
+             }
+             @include desktop {
+                 margin-right: 4rem;
+             }
+         }
+
+         &__header2 {
+            @include tablet {
+                margin-right: 2rem;
+                width: 80px;
+                // display: flex;
+            }
+            @include desktop {
+                margin-right: 5.5rem;
+            }
+         }
+
+         &__header3 {
+             @include tablet {
+                //  margin-right: .3rem;
+                 width: 140px;
+                 margin-left: 2rem;
+             }
+             @include desktop {
+                 width: 110px;
+             }
+         }
+
+         
+         &__header5 {
+             @include tablet {
+                 margin-left: 2rem;
+                 margin-right: 1.5rem;
+             }
+             @include  desktop {
+                 margin-left: 4rem;
+             }
+         }
+}
+
+table {
+    @include tablet {
+        width: 704px;
+    }
+    @include desktop {
+        width: 1020px;
+    }
+}
+
+.info {
+    border-bottom: 1px solid $cloud;
+  }
+  .info:last-of-type {
+    border-bottom: none;
+  }
+
+  
+ 
+.info {
+    
+    @include tablet {
+        display: flex;
+        width: 704px;
+        height: 80px;
+    
+    }
+    @include desktop {
+        width: 1020px;
+        // border: 1px solid red;
+        
+    }
+
+    
+
+    td {
+        font-size: .8125rem;
+    }
+
+    h4 {
+        font-size: .68rem;
+        color: $slate;
+        line-height: 1rem;
+        margin-bottom: .25rem;
+
+        @include tablet {
+            display: none;
+        }
+    }
+
+    &__details {
+        display: flex;
+        margin-left: 1.5rem;
+
+        @include tablet {
+            align-items: center;
+            width: 704px;
+            margin-left: 1.5rem;
+        }
+
+        @include desktop {
+            width: 600px;
+            margin: 2.5rem;
+        }
+    }
+
+    &__leftside {
+
+       @include tablet {
+        display: flex;
+        width: 260px;
+        justify-content: space-between;
+       }
+
+       @include desktop {
+           width: 560px;
+       }
+    }
+
+    &__top-border {
+        border-top: 1px solid $cloud;
+        margin-top: 1.5rem;
+        margin-bottom: 1rem;
+
+        @include tablet {
+            border: none;
+        }
+    }
+
+    &__icons {
+        margin-left: 1.5rem;
+        display: flex;
+        justify-content: space-between;
+        margin-right: 1.5rem;
+        margin-top: 1.18rem;
+        
+        @include tablet {
+            margin-right: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        @include desktop {
+            margin-left: 14rem;
+        }
+    }
+    &__chevron {
+        display: flex;
+        align-items: center;
+        @include desktop {
+            width: 98.17px;
+            margin-right: 6rem;
+        }
+    }
+
+    &__warehouse-name {
+       color: $stockIndigo;
+       font-weight: 600; 
+
+    }
+
+    &__address-container {
+        margin-top: 1rem;
+        line-height: 1.25rem;
+        width: 130px;
+        @include desktop {
+            width:206px;
+        }
+
+        // @include tablet {
+        //     width: 87px;
+        // }
+    }
+
+    &__address {
+        @include tablet {
+            width: 87px;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        @include desktop {
+            width: 178px;
+            
+        }
+    }
+
+    &__edit {
+        margin-left: 1rem;
+    }
+   
+
+}
+
+.contact {
+    margin-left: 1rem;
+
+    @include tablet {
+        display: flex;
+        width: 260px;
+        justify-content: space-between;
+        // align-items: center;
+        // border: 1px solid red;
+    }
+
+    @include desktop {
+        width: 350px;
+    }
+    
+    &__name {
+        margin-bottom: 1rem;
+
+        @include tablet {
+            // width: 120px;
+            // margin-right:  3rem;
+        }
+
+        @include desktop {
+            width: 170px;
+            margin-left: 2rem;
+            margin-right: 3.5rem;
+        }
+    }
+
+    &__info {
+        line-height: 1.3rem;
+
+        @include tablet {
+            width: 120px;
+            padding-top: .5rem;
+        }
+        @include desktop {
+            width: 230px;
+        }
+       
+    }
+
+    &__actual-name {
+        @include tablet {
+            padding-top: 1rem;
+
+        }
+    }
+}
