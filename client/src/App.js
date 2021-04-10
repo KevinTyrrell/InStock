@@ -7,6 +7,7 @@ import Header from './Components/Header/Header';
 import Footer from './Components/Footer/Footer';
 import NewInventory from './Pages/NewInventory'
 import EditInventory from './Pages/EditInventory'
+import EditWarehouse from './Pages/EditWarehouse'
 
 class App extends React.Component {
   render() {
@@ -15,10 +16,10 @@ class App extends React.Component {
         <Header />
         <Switch>
         <Route exact path="/editinventory" component={EditInventory} />
-          {/*<Route path="/warehouses" exact component={WarehousesList} />
-           <Route path="" component={}/>
-         <Route path="" component={}/>
-         <Route path="" component={}/> */}
+          <Route exact path="/warehouses" component={WarehousesList} />
+           <Route exact path="/newinventory" component={NewInventory}/>
+         <Route exact path="/editwarehouse" component={EditWarehouse}/>
+         {/* <Route path="" component={}/> */}
         </Switch>
         <Footer />
       </Router>

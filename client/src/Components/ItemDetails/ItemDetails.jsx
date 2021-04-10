@@ -8,6 +8,7 @@ export class ItemDetails extends Component {
 
 	componentDidUpdate(prevProps, prevState) {
 
+
 		if (this.props.testErrors !== prevProps.testErrors ) {
 
 			this.setState({
