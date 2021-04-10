@@ -13,6 +13,12 @@ export class NewInventory extends Component {
 		categoryList: [],
 		submitted: false,
 		errors: false,
+        testErrors: {
+            itemName: false,
+            description: false,
+            category: false,
+            warehouseName: false
+        }
 	};
 
 	componentDidMount() {
@@ -57,9 +63,8 @@ export class NewInventory extends Component {
 				quantity,
 			} = e.target;
 
-			if (itemName.value == "") {
-				this.setState({ errors: true });
-				console.log(`NI errors: ${this.state.errors}`);
+			if (itemName.value === "") {
+				this.setState({ testErrors: {...this.state.testErrors, itemName: true} });
 			} else {
 				const newItem = {
 					warehouseName: warehouseName.value,
@@ -71,7 +76,13 @@ export class NewInventory extends Component {
 				};
 
 				console.log(newItem);
-				this.setState({ submitted: true, errors: false });
+				this.setState({ submitted: true, errors: false,});
+                this.setState({testErrors: {
+                    itemName: false,
+                    description: false,
+                    category: false,
+                    warehouseName: false
+                }})
 
 				e.target.reset();
 			}
@@ -92,7 +103,7 @@ export class NewInventory extends Component {
 					<ItemDetails
 						categoryList={this.state.categoryList}
 						submitted={this.state.submitted}
-						errors={this.state.errors}
+						errors={this.state.errors} testErrors={this.state.testErrors}
 					/>
 					<ItemAvailability
 						warehouseList={this.state.warehouseList}

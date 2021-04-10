@@ -2,7 +2,8 @@ import React, { Component } from "react";
 export class ItemDetails extends Component {
 
 	state = {
-		showError: this.props.errors
+		showError: this.props.errors,
+		showErrors: this.props.testErrors
 	};
 
 
@@ -19,9 +20,19 @@ export class ItemDetails extends Component {
 				showError: !this.state.showError
 			}));
 		}
+
+		//////////////////////////////
+		if (this.props.testErrors !== prevProps.testErrors) {
+			
+			this.setState((currentState) => ({
+				showErrors: {...this.props.testErrors}
+			}));
+		}
 	}
 
 	render() {
+
+		console.log(this.state.showErrors)
 		return (
 			<section className='form__section form__section-details'>
 				<label className='section__title'>Item Details</label>
@@ -29,13 +40,13 @@ export class ItemDetails extends Component {
 					Item Name
 				</label>
 				<input
-					className={this.state.showError ? "form__input-radius error" : "form__input-radius"}
+					className={this.state.showErrors.itemName ? "form__input-radius error" : "form__input-radius"}
 					type='text'
 					placeholder='Item Name'
 					name='itemName'
 					
 				/>
-				<label className="error__message" style={{ display: this.state.showError ? "flex" : "none" }} htmlFor='itemName'>
+				<label className="error__message" style={{ display: this.state.showErrors.itemName ? "flex" : "none" }} htmlFor='itemName'>
 					This field is required
 				</label>
 				<label className='input__title' htmlFor='description'>
