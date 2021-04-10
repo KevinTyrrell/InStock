@@ -195,6 +195,13 @@ $out: #c94515;
      @include dtH3;
    }
 }
+%p3 {
+     @include moP3;
+
+   @include tablet {
+     @include dtP3;
+   }
+}
 
 %section-pad {
     padding: 1rem 1.5rem 1.5rem;
