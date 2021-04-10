@@ -13,7 +13,7 @@ class App extends React.Component {
       <Router>
         <Header />
         <Switch>
-        <Route exact path="/" component={NewInventory} />
+        <Route exact path="/newinventory" component={NewInventory} />
           {/*<Route path="/warehouses" exact component={WarehousesList} />
            <Route path="" component={}/>
          <Route path="" component={}/>
