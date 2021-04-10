@@ -24,7 +24,7 @@ h4 {
       align-items: center;
       justify-content: space-between;
       padding-right: 1.5rem;
-      padding-top: .5rem
+      padding-top: 0.5rem;
     }
   }
 
@@ -208,13 +208,12 @@ h4 {
   @include tablet {
     display: flex;
     background: rgba(247, 248, 249, 0.7);
-    max-width: 702px;
     height: 40px;
     margin-left: -2px;
     margin-right: -2px;
-    // justify-content: space-evenly;
     align-items: center;
     padding-left: 2rem;
+    margin-bottom: 1rem;
 
     &__items {
       @include dtH4;
@@ -265,11 +264,12 @@ h4 {
     align-items: center;
     justify-content: space-between;
     margin-left: 2rem;
+    padding-bottom: 1rem;
 
     &__name {
       @include dtH3;
       color: $stockIndigo;
-      display: flex
+      display: flex;
     }
 
     &__cat {
@@ -298,11 +298,6 @@ th {
   width: 16.35%;
 }
 
-.editButton {
-  @include tablet {
-    margin-left: 1rem;
-  }
+#deleteBtn {
+  margin-right: 1rem;
 }
-
-
-

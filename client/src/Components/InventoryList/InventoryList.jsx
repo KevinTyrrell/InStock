@@ -74,7 +74,7 @@ export class InventoryList extends Component {
                   <td className="sortItems__qty">{inv.quantity}</td>
                   <td className="sortItems__ware">{inv.warehouseName}</td>
                   <td>
-                    <img id src={deleteBtn} alt="delete button" />
+                    <img id="deleteBtn" src={deleteBtn} alt="delete button" />
                     <img src={editBtn} alt="edit button" />
                   </td>
                 </tr>
@@ -107,7 +107,7 @@ export class InventoryList extends Component {
                 </div>
                 <div className="invBtns">
                   <img src={deleteBtn} alt="delete button" />
-                  <img className="editButton" src={editBtn} alt="edit button" />
+                  <img src={editBtn} alt="edit button" />
                 </div>
               </div>
             );
