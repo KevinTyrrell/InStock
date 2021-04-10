@@ -12,7 +12,7 @@ export class NewInventory extends Component {
 		warehouseList: [],
 		categoryList: [],
 		submitted: false,
-        testErrors: {
+        Errors: {
             itemName: false,
             description: false,
             category: false,
@@ -72,7 +72,7 @@ export class NewInventory extends Component {
 
 
 			//Set error flags according to form inputs
-		this.setState({testErrors: {
+		this.setState({Errors: {
 			itemName: itemName.value === "" ?  true : false,
 			description: description.value === "" ? true : false,
 			category: category.value === "" ? true : false,
@@ -98,7 +98,7 @@ export class NewInventory extends Component {
 					console.log(response.data) )
 				.catch(err => {console.error(err)})
 
-                this.setState({testErrors: {
+                this.setState({Errors: {
                     itemName: false,
                     description: false,
                     category: false,
@@ -127,12 +127,12 @@ export class NewInventory extends Component {
 					<ItemDetails
 						categoryList={this.state.categoryList}
 						submitted={this.state.submitted}
-						testErrors={this.state.testErrors}
+						Errors={this.state.Errors}
 					/>
 					<ItemAvailability
 						warehouseList={this.state.warehouseList}
 						submitted={this.state.submitted}
-						testErrors={this.state.testErrors}
+						Errors={this.state.Errors}
 					/>
 				</div>
 				<div className='button__container'>

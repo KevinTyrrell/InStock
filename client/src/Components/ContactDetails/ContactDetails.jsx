@@ -11,7 +11,6 @@ export class ContactDetails extends Component {
         if (this.props.submitted !== prevProps.submitted) {
 			this.setState({
 				showQuantity: true,
-				showError: !this.state.showError,
 			});
 		}
 

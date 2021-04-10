@@ -4,7 +4,7 @@ export class ItemAvailability extends Component {
 	state = {
 		showQuantity: true,
 		showError: this.props.errors,
-		showErrors: this.props.testErrors,
+		showErrors: this.props.Errors,
 	};
 
 	componentDidMount(){
@@ -16,13 +16,13 @@ export class ItemAvailability extends Component {
 		if (this.props.submitted !== prevProps.submitted) {
 			this.setState({
 				showQuantity: true,
-				showError: !this.state.showError,
+				showErrors: !this.state.showError,
 			});
 		}
 
-		if (this.props.testErrors !== prevProps.testErrors) {
+		if (this.props.Errors !== prevProps.Errors) {
 			this.setState({
-				showErrors: { ...this.props.testErrors },
+				showErrors: { ...this.props.Errors },
 			});
 		}
 	}
