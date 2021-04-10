@@ -63,9 +63,17 @@ export class NewInventory extends Component {
 				quantity,
 			} = e.target;
 
-			if (itemName.value === "") {
-				this.setState({ testErrors: {...this.state.testErrors, itemName: true} });
-			} else {
+    if( itemName.value === "" || description.value === "" || category.value === "" ||warehouseName.value === "") {
+
+		this.setState({testErrors: {
+			itemName: itemName.value === "" ?  true : false,
+			description: description.value === "" ? true : false,
+			category: category.value === "" ? true : false,
+			warehouseName: warehouseName.value === "Please Select" ? true : false
+		}})
+			
+            
+        }else {
 				const newItem = {
 					warehouseName: warehouseName.value,
 					itemName: itemName.value,
@@ -108,7 +116,7 @@ export class NewInventory extends Component {
 					<ItemAvailability
 						warehouseList={this.state.warehouseList}
 						submitted={this.state.submitted}
-						errors={this.state.errors}
+						errors={this.state.errors} testErrors={this.state.testErrors}
 					/>
 				</div>
 				<div className='button__container'>

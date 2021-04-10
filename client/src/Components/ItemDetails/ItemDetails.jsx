@@ -22,7 +22,10 @@ export class ItemDetails extends Component {
 		}
 
 		//////////////////////////////
-		if (this.props.testErrors !== prevProps.testErrors) {
+		if (JSON.stringify(this.props.testErrors) !== JSON.stringify(prevProps.testErrors) ) {
+			console.log(this.props.testErrors)
+			
+			console.log(prevProps.testErrors)
 			
 			this.setState((currentState) => ({
 				showErrors: {...this.props.testErrors}
@@ -31,8 +34,6 @@ export class ItemDetails extends Component {
 	}
 
 	render() {
-
-		console.log(this.state.showErrors)
 		return (
 			<section className='form__section form__section-details'>
 				<label className='section__title'>Item Details</label>
@@ -54,18 +55,18 @@ export class ItemDetails extends Component {
 				</label>
 				<textarea
 					style={{ resize: "none" }}
-					className={this.state.showError ? "form__input-radius error" : "form__input-radius"}
+					className={this.state.showErrors.description ? "form__input-radius error" : "form__input-radius"}
 					type='text'
 					placeholder='Please enter a brief item description...'
 					name='description'
 					
-				/><label className="error__message" style={{ display: this.state.showError ? "flex" : "none" }} htmlFor='description'>
+				/><label className="error__message" style={{ display: this.state.showErrors.description ? "flex" : "none" }} htmlFor='description'>
 					This field is required
 				</label>
 				<label className='input__title' htmlFor='category'>
 					Category
 				</label>
-				<select className={this.state.showError ? 'form__input-radius form__input-drop error' : 'form__input-radius form__input-drop'} name='category' >
+				<select className={this.state.showErrors.category ? 'form__input-radius form__input-drop error' : 'form__input-radius form__input-drop'} name='category' >
 					<option value='' >Please Select</option>
 					{this.props.categoryList.map((category, i) => {
 						return (
@@ -75,7 +76,7 @@ export class ItemDetails extends Component {
 						);
 					})}
 				</select>
-				<label className="error__message" style={{ display: this.state.showError ? "flex" : "none" }} htmlFor='category'>
+				<label className="error__message" style={{ display: this.state.showErrors.category ? "flex" : "none" }} htmlFor='category'>
 					This field is required
 				</label>
 			</section>
