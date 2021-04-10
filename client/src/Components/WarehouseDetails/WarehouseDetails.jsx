@@ -2,16 +2,23 @@ import React, { Component } from 'react'
 
 export class WarehouseDetails extends Component {
 	state = {
-		showErrors: this.props.testErrors
+		showErrors: this.props.Errors
 	};
 
 
 	componentDidUpdate(prevProps, prevState) {
 
-		if (this.props.testErrors !== prevProps.testErrors ) {
+        if (this.props.submitted !== prevProps.submitted) {
+			this.setState({
+				showQuantity: true,
+				showError: !this.state.showError,
+			});
+		}
+
+		if (this.props.Errors !== prevProps.Errors ) {
 
 			this.setState({
-				showErrors: {...this.props.testErrors}
+				showErrors: {...this.props.Errors}
 			})
 		}
 	}
@@ -20,17 +27,17 @@ export class WarehouseDetails extends Component {
 		return (
 			<section className='form__section form__section-details'>
 				<label className='section__title'>Warehouse Details</label>
-				<label className='input__title' htmlFor='WarehouseName'>
+				<label className='input__title' htmlFor='warehouseName'>
 					Warehouse Name
 				</label>
 				<input
-					className={this.state.showErrors.WarehouseName ? "form__input-radius error" : "form__input-radius"}
+					className={this.state.showErrors.warehouseName ? "form__input-radius error" : "form__input-radius"}
 					type='text'
 					placeholder='Warehouse Name'
-					name='WarehouseName'
+					name='warehouseName'
 					
 				/>
-				<label className="error__message" style={{ display: this.state.showErrors.WarehouseName ? "flex" : "none" }} htmlFor='WarehouseName'>
+				<label className="error__message" style={{ display: this.state.showErrors.warehouseName ? "flex" : "none" }} htmlFor='warehouseName'>
 					This field is required
 				</label>
 				<label className='input__title' htmlFor='streetAddress'>

@@ -8,15 +8,16 @@ import ArrowBack from "../InStock Assets/Icons/arrow_back-24px.svg";
 
 export class EditWarehouse extends Component {
 	state = {
-		warehouseList: [],
-		categoryList: [],
 		submitted: false,
-        testErrors: {
-            itemName: false,
-            description: false,
-            category: false,
-			quantity: false,
-            warehouseName: false
+        Errors: {
+            warehouseName: false,
+            streetAddress: false,
+            city: false,
+            country: false,
+			contactName: false,
+            position: false,
+            phoneNumber: false,
+            email: false
         }
 	};
 
@@ -26,25 +27,17 @@ export class EditWarehouse extends Component {
 		axios
 			.get("/warehouses")
 			.then((response) => {
-				this.setState({ warehouseList: [...response.data] });
+				
 			})
 			.catch((err) => {
 				console.log(err);
 			});
 
-		let catArr = [];
 
 		axios
 			.get("/inventories")
 			.then((response) => {
-				response.data.forEach((item) => {
-					if (
-						catArr.findIndex((category) => category === item.category) === -1
-					) {
-						catArr.push(item.category);
-					}
-				});
-				this.setState({ categoryList: [...catArr] });
+			
 			})
 			.catch((err) => {
 				console.log(err);
@@ -56,27 +49,31 @@ export class EditWarehouse extends Component {
 		//Submit Form logic with validation
 		const submitHandler = (e) => {
 			e.preventDefault();
+            
 
 			const {
 				warehouseName,
-				itemName,
-				description,
-				category,
-				status,
-				quantity,
+                    streetAddress,
+                    city,
+                    country,
+                    contactName,
+                    position,
+                    phoneNumber,
+                    email
 			} = e.target;
 
 				//If any fields are empty
-    if( itemName.value === "" || description.value === "" || category.value === ""  || category.value === "" || warehouseName.value === "") {
-
-
+    if( warehouseName.value === '' || streetAddress.value === '' || city.value === '' || country.value === '' || contactName.value === '' || position.value === '' || phoneNumber.value === '' || email.value === '' ) {
 			//Set error flags according to form inputs
-		this.setState({testErrors: {
-			itemName: itemName.value === "" ?  true : false,
-			description: description.value === "" ? true : false,
-			category: category.value === "" ? true : false,
-			quantity: category.value === "" ? true : false,
-			warehouseName: warehouseName.value === "" ? true : false
+		this.setState({Errors: {
+			warehouseName: warehouseName.value === '' ? true : false,
+            streetAddress: streetAddress.value === '' ? true : false,
+            city: city.value === '' ? true : false,
+            country: country.value === '' ? true : false,
+			contactName: contactName.value === '' ? true : false,
+            position: position.value === '' ? true : false,
+            phoneNumber: phoneNumber.value === '' ? true : false,
+            email: email.value === '' ? true : false
 		}})
 			
             
@@ -85,25 +82,33 @@ export class EditWarehouse extends Component {
 			//Create new Item object
 				const newItem = {
 					warehouseName: warehouseName.value,
-					itemName: itemName.value,
-					description: description.value,
-					category: category.value,
-					status: status.value,
-					quantity: status.value === "In Stock" ? quantity.value : 0,
+            streetAddress: streetAddress.value,
+            city: city.value,
+            country: country.value,
+			contactName: contactName.value,
+            position: position.value,
+            phoneNumber: phoneNumber.value,
+            email: email.value
 				};
 
-				axios.post("/inventories", newItem)
+                console.log(newItem);
+
+				axios.post("/something", newItem)
 				.then(response =>
 					console.log(response.data) )
 				.catch(err => {console.error(err)})
 
-                this.setState({testErrors: {
-                    itemName: false,
-                    description: false,
-                    category: false,
-					quantity: false,
-                    warehouseName: false
+                this.setState({Errors: {
+                    warehouseName: false,
+                    streetAddress: false,
+                    city: false,
+                    country: false,
+                    contactName: false,
+                    position: false,
+                    phoneNumber: false,
+                    email: false
                 }})
+
 				//Set submitted state to true to push to components to reset
 				this.setState({submitted: true})
 				//Reset Form
@@ -124,14 +129,12 @@ export class EditWarehouse extends Component {
 				</div>
 				<div className='responsive'>
 					<WarehouseDetails
-						categoryList={this.state.categoryList}
 						submitted={this.state.submitted}
-						testErrors={this.state.testErrors}
+						Errors={this.state.Errors}
 					/>
 					<ContactDetails
-						warehouseList={this.state.warehouseList}
 						submitted={this.state.submitted}
-						testErrors={this.state.testErrors}
+						Errors={this.state.Errors}
 					/>
 				</div>
 				<div className='button__container'>

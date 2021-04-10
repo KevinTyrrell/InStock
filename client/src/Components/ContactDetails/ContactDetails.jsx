@@ -2,16 +2,23 @@ import React, { Component } from 'react'
 
 export class ContactDetails extends Component {
 	state = {
-		showErrors: this.props.testErrors
+		showErrors: this.props.Errors
 	};
 
 
 	componentDidUpdate(prevProps, prevState) {
 
-		if (this.props.testErrors !== prevProps.testErrors ) {
+        if (this.props.submitted !== prevProps.submitted) {
+			this.setState({
+				showQuantity: true,
+				showError: !this.state.showError,
+			});
+		}
+
+		if (this.props.Errors !== prevProps.Errors ) {
 
 			this.setState({
-				showErrors: {...this.props.testErrors}
+				showErrors: {...this.props.Errors}
 			})
 		}
 	}
