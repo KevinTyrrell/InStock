@@ -27,11 +27,13 @@ function getWarehouseIndex(warehouses, res, id) {
 }
 
 /* GET ALL WAREHOUSES */
-router.get("/", (req, res) => {
-    const warehouses = getWarehouses(res);
-    if (warehouses) res.status(200).json(warehouses);
-});
-
+router.get('/', (req, res) => {
+    const srcPath = path.resolve(__dirname, '../data/warehouses.json');
+    const allWarehouses = JSON.parse(fs.readFileSync(srcPath));
+    res.json(allWarehouses);
+    
+  })
+  
 /* GET A SINGLE WAREHOUSE */
 router.get("/:warehouseId", (req, res) => {
     const warehouses = getWarehouses(res);

@@ -2,7 +2,7 @@
 import "./App.scss";
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import WarehousesList from "./components/WarehousesList/WarehousesList";
+import WarehousesList from "./Components/WarehousesList/WarehousesList";
 import Header from './Components/Header/Header';
 import Footer from './Components/Footer/Footer';
 
