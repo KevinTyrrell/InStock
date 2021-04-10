@@ -4,42 +4,42 @@ export class ItemAvailability extends Component {
 	state = {
 		showQuantity: true,
 		showError: this.props.errors,
-		showErrors: this.props.testErrors
+		showErrors: this.props.testErrors,
 	};
 
-	componentDidUpdate(prevProps, prevState) {
+	componentDidMount(){
+		this.setState({showQuantity: true})
+	}
 
+	componentDidUpdate(prevProps, prevState) {
+		
 		if (this.props.submitted !== prevProps.submitted) {
 			this.setState({
 				showQuantity: true,
-				showError: !this.state.showError
-			})
+				showError: !this.state.showError,
+			});
 		}
 
-		if (this.props.testErrors !== prevProps.testErrors ) {
-
+		if (this.props.testErrors !== prevProps.testErrors) {
 			this.setState({
-				showErrors: {...this.props.testErrors}
-			})
+				showErrors: { ...this.props.testErrors },
+			});
 		}
 	}
 
 	render() {
-
 		const toggleQuantity = (e) => {
 			const { value } = e.target;
 
 
-			//{TODO://ternary statment}
-			if (value === "Out of Stock") {
-				this.setState({
-					showQuantity: false,
-				})
-			} else {
-				this.setState({
-					showQuantity: true,
-				})
-			}
+			this.setState({showQuantity: !this.state.showQuantity})
+			/* value === "Out of Stock"
+				? this.setState({
+						showQuantity: false,
+				  })
+				: this.setState({
+						showQuantity: true,
+				  }); */
 		};
 
 		return (
@@ -92,7 +92,9 @@ export class ItemAvailability extends Component {
 						/>
 						<label
 							className='error__message'
-							style={{ display: this.state.showErrors.quantity ? "flex" : "none" }}
+							style={{
+								display: this.state.showErrors.quantity ? "flex" : "none",
+							}}
 							htmlFor='quantity'>
 							This field is required
 						</label>
@@ -121,7 +123,9 @@ export class ItemAvailability extends Component {
 				</select>
 				<label
 					className='error__message'
-					style={{ display: this.state.showErrors.warehouseName ? "flex" : "none" }}
+					style={{
+						display: this.state.showErrors.warehouseName ? "flex" : "none",
+					}}
 					htmlFor='warehouseName'>
 					This field is required
 				</label>

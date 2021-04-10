@@ -12,7 +12,6 @@ export class NewInventory extends Component {
 		warehouseList: [],
 		categoryList: [],
 		submitted: false,
-		errors: false,
         testErrors: {
             itemName: false,
             description: false,
@@ -23,6 +22,8 @@ export class NewInventory extends Component {
 	};
 
 	componentDidMount() {
+
+		//Initial api calls to generate category and warehouse list
 		axios
 			.get("/warehouses")
 			.then((response) => {
@@ -52,6 +53,8 @@ export class NewInventory extends Component {
 	}
 
 	render() {
+
+		//Submit Form logic with validation
 		const submitHandler = (e) => {
 			e.preventDefault();
 
@@ -64,22 +67,23 @@ export class NewInventory extends Component {
 				quantity,
 			} = e.target;
 
-
+				//If any fields are empty
     if( itemName.value === "" || description.value === "" || category.value === ""  || category.value === "" || warehouseName.value === "") {
 
 
-			if(status.value == "Out of Stock") quantity.value = 0;
-			
+			//Set error flags according to form inputs
 		this.setState({testErrors: {
 			itemName: itemName.value === "" ?  true : false,
 			description: description.value === "" ? true : false,
 			category: category.value === "" ? true : false,
-			quantity: quantity.value === "" ? true : false,
+			quantity: category.value === "" ? true : false,
 			warehouseName: warehouseName.value === "" ? true : false
 		}})
 			
             
         }else {
+
+			//Create new Item object
 				const newItem = {
 					warehouseName: warehouseName.value,
 					itemName: itemName.value,
@@ -89,8 +93,11 @@ export class NewInventory extends Component {
 					quantity: status.value === "In Stock" ? quantity.value : 0,
 				};
 
-				console.log(newItem);
-				this.setState({ submitted: true, errors: false,});
+				axios.post("/inventories", newItem)
+				.then(response =>
+					console.log(response.data) )
+				.catch(err => {console.error(err)})
+
                 this.setState({testErrors: {
                     itemName: false,
                     description: false,
@@ -98,7 +105,9 @@ export class NewInventory extends Component {
 					quantity: false,
                     warehouseName: false
                 }})
-
+				//Set submitted state to true to push to components to reset
+				this.setState({submitted: true})
+				//Reset Form
 				e.target.reset();
 			}
 		};
@@ -118,12 +127,12 @@ export class NewInventory extends Component {
 					<ItemDetails
 						categoryList={this.state.categoryList}
 						submitted={this.state.submitted}
-						errors={this.state.errors} testErrors={this.state.testErrors}
+						testErrors={this.state.testErrors}
 					/>
 					<ItemAvailability
 						warehouseList={this.state.warehouseList}
 						submitted={this.state.submitted}
-						errors={this.state.errors} testErrors={this.state.testErrors}
+						testErrors={this.state.testErrors}
 					/>
 				</div>
 				<div className='button__container'>

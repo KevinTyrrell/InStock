@@ -2,20 +2,12 @@ import React, { Component } from "react";
 export class ItemDetails extends Component {
 
 	state = {
-		showError: this.props.errors,
 		showErrors: this.props.testErrors
 	};
 
 
 	componentDidUpdate(prevProps, prevState) {
 
-		if (this.props.submitted !== prevProps.submitted) {
-			this.setState({
-				showError: !this.state.showError
-			})
-		}
-
-		//////////////////////////////
 		if (this.props.testErrors !== prevProps.testErrors ) {
 
 			this.setState({
