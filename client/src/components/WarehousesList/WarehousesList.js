@@ -30,7 +30,7 @@ class WarehouseList extends React.Component {
           <button className="warehouses__button" type="button">+ Add New Warehouse</button>  
         </div>
 
-        <table style={{ width: "100%" }} >
+        <table className="warehouses__table"style={{ width: "100%" }} >
           <tr className="warehouses__row-headers">
             
             <div className="warehouses__header1">

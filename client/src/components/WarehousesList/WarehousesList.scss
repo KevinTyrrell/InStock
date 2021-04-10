@@ -7,21 +7,30 @@
 }
 
 .warehouses {
+    position: absolute;
+    background-color: white;
+    z-index: 10;
     max-width: 21.4rem;
     margin: auto;
     margin-bottom: 1.5rem;
     font-family: "Titillium Web";
     color: $stockBlack;
-
+    top: 12%;
+    left: 5%;
 
     @include tablet {
-        max-width: 43rem;
+        max-width: 44rem;
         margin: auto;
+        top: 11%;
+        left: 4%;
     }
 
     @include desktop {
+        height: 672px;
         max-width: 63.75rem;
         margin: auto;
+        left: 15.16%;
+        top: 10.95%;
     }
 
         &__wrapperOne {
@@ -33,6 +42,11 @@
                 width: 44rem;
                 margin-bottom: .5rem;
             }
+            @include desktop {
+                width: 63.75rem;
+                margin-left: 2.5rem;
+            
+            }
         }
        
         &__title {
@@ -41,7 +55,12 @@
             color: $stockBlack;
 
             @include tablet {
-                padding-right: 12rem;
+                padding-right: 8.6rem;
+            }
+
+            @include desktop {
+                padding-right: 21rem;
+                // marg-right: 10rem;
             }
          }
 
@@ -64,6 +83,11 @@
                 width: 11.6rem;
                 margin-right: 1rem;
                 background-position-x: 9rem;
+            }
+
+            @include desktop {
+                width: 274px;
+                background-position-x: 14.5rem;
             }
          }
 
@@ -91,9 +115,10 @@
                 justify-content: center;
                 color: $slate;
                 background-color: $lightgrey;
-                width: 765px;
+                width: 702px;
                 height: 45px;
                 margin-right: 0;
+                padding-left: 1.1rem;
                 @include dtH4;
 
                 div {
@@ -101,6 +126,13 @@
                     // width: 150px;
                 }
              }
+             @include desktop {
+                 width: 1020px;
+                 justify-content: space-between;
+                 padding-right: 1.8rem;
+                 padding-left: 2.5rem;
+             }
+             
          }
 
         
@@ -111,42 +143,53 @@
                  margin-right: 3.2rem;
                 //  margin-left: .2rem;
              }
+             @include desktop {
+                 margin-right: 4rem;
+             }
          }
 
          &__header2 {
             @include tablet {
-                margin-right: 3.8rem;
+                margin-right: 2rem;
                 width: 80px;
                 // display: flex;
+            }
+            @include desktop {
+                margin-right: 5.5rem;
             }
          }
 
          &__header3 {
              @include tablet {
                 //  margin-right: .3rem;
-                 width: 160px;
+                 width: 140px;
+                 margin-left: 2rem;
+             }
+             @include desktop {
+                 width: 110px;
              }
          }
 
-         &__header4 {
-             @include tablet {
-
-             }
-         }
-
+         
          &__header5 {
              @include tablet {
-                 margin-left: 3rem;
+                 margin-left: 2rem;
                  margin-right: 1.5rem;
+             }
+             @include  desktop {
+                 margin-left: 4rem;
              }
          }
 }
 
-// table {
-//     @include tablet {
-//         width: 768px;
-//     }
-// }
+table {
+    @include tablet {
+        width: 704px;
+    }
+    @include desktop {
+        width: 1020px;
+    }
+}
 
 .info {
     border-bottom: 1px solid $cloud;
@@ -155,19 +198,26 @@
     border-bottom: none;
   }
 
-
+  
+ 
 .info {
     
     @include tablet {
         display: flex;
-        width: 765px;
-        // width: 704px;
+        width: 704px;
         height: 80px;
+    
     }
+    @include desktop {
+        width: 1020px;
+        // border: 1px solid red;
+        
+    }
+
+    
 
     td {
         font-size: .8125rem;
-        // margin-bottom: 1.18rem;
     }
 
     h4 {
@@ -186,15 +236,14 @@
         margin-left: 1.5rem;
 
         @include tablet {
-            // display: flex;
-            // justify-content: center;
             align-items: center;
-            // justify-content: space-between;
             width: 704px;
-            // height: 80px;
-            // border: 1px solid red;
-            margin-left: 2rem;
-            // text-align: left;
+            margin-left: 1.5rem;
+        }
+
+        @include desktop {
+            width: 600px;
+            margin: 2.5rem;
         }
     }
 
@@ -204,6 +253,10 @@
         display: flex;
         width: 260px;
         justify-content: space-between;
+       }
+
+       @include desktop {
+           width: 560px;
        }
     }
 
@@ -225,13 +278,21 @@
         margin-top: 1.18rem;
         
         @include tablet {
-            margin-right: 2.5rem;
+            margin-right: 2rem;
             margin-bottom: 1rem;
+        }
+
+        @include desktop {
+            margin-left: 14rem;
         }
     }
     &__chevron {
         display: flex;
         align-items: center;
+        @include desktop {
+            width: 98.17px;
+            margin-right: 6rem;
+        }
     }
 
     &__warehouse-name {
@@ -244,6 +305,9 @@
         margin-top: 1rem;
         line-height: 1.25rem;
         width: 130px;
+        @include desktop {
+            width:206px;
+        }
 
         // @include tablet {
         //     width: 87px;
@@ -256,6 +320,11 @@
             display: flex;
             justify-content: center;
             margin-bottom: 1rem;
+        }
+
+        @include desktop {
+            width: 178px;
+            
         }
     }
 
@@ -271,10 +340,14 @@
 
     @include tablet {
         display: flex;
-        width: 310px;
+        width: 260px;
         justify-content: space-between;
         // align-items: center;
         // border: 1px solid red;
+    }
+
+    @include desktop {
+        width: 350px;
     }
     
     &__name {
@@ -282,7 +355,13 @@
 
         @include tablet {
             // width: 120px;
-            margin-right:  3.5rem;
+            // margin-right:  3rem;
+        }
+
+        @include desktop {
+            width: 170px;
+            margin-left: 2rem;
+            margin-right: 3.5rem;
         }
     }
 
@@ -290,8 +369,11 @@
         line-height: 1.3rem;
 
         @include tablet {
-            width: 150px;
+            width: 120px;
             padding-top: .5rem;
+        }
+        @include desktop {
+            width: 230px;
         }
        
     }
@@ -299,6 +381,7 @@
     &__actual-name {
         @include tablet {
             padding-top: 1rem;
+
         }
     }
 }
