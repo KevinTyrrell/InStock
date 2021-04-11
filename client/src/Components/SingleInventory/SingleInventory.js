@@ -19,34 +19,44 @@ class SingleInventory extends React.Component {
     }
     render() {
         return (
-        <section>
-            <div>
+        <section className="container">
+            <div className="container__header">
                 <img src={backArrow} alt="back arrow"/>
-                <h1>Television</h1>
-                <img src={editIcon} alt="edit icon" />
+                <h1 className="container__title">Television</h1>
+                <img className="container__editIcon" src={editIcon} alt="edit icon" />
             </div>
+            <div className="container__border-bottom"></div>
 
-            <h4>ITEM DESCRIPTION:</h4>
-            <p>{this.state.data.description}</p>
 
-            <h4>CATEGORY:</h4>
-            <p>{this.state.data.category}</p>
+    <div className="container__info">
 
-        <div>
+        <div className="container__leftside">
+            <h4 className="container__info-titles">ITEM DESCRIPTION:</h4>
+            <p className="container__info-details">{this.state.data.description}</p>
+
+            <h4 className="container__info-titles">CATEGORY:</h4>
+            <p className="container__info-details">{this.state.data.category}</p>
+
+        </div>
+        
+
+    <div>
+        <div className="container__availability">
             <div>
-                <h4>STATUS:</h4>
-                <p>{this.state.data.status}</p>
+                <h4 className="container__info-titles">STATUS:</h4>
+                <p className="container__info-details container__stock">{this.state.data.status}</p>
             </div>
-            <div>
-                <h4>QUANTITY:</h4>
-                <p>{this.state.data.quantity}</p>
+            <div className="container__quantity">
+                <h4 className="container__info-titles">QUANTITY:</h4>
+                <p className="container__info-details">{this.state.data.quantity}</p>
             </div>
 
         </div>
 
-        <h4>WAREHOUSE:</h4>
-        <p>{this.state.data.warehouseName}</p>
-
+        <h4 className="container__info-titles">WAREHOUSE:</h4>
+        <p className="container__info-details">{this.state.data.warehouseName}</p>
+    </div>
+    </div>
             </section>
         )
     }

@@ -1,3 +1,132 @@
 @use '../../partials/partial' as *;
 
 
+.container {
+    position: absolute;
+    left: 4.27%;
+    right: 4.27%;
+    top: 10.39%;
+    bottom: 24.89%;
+    z-index: 10;
+    background-color: white;
+    max-width: 21.44rem;
+    height: 22.8rem;
+    box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
+    border-radius: 3px;
+    margin: auto;
+
+    @include tablet {
+        max-width: 44rem;
+        position: absolute;
+        left: 4.17%;
+        right: 4.17%;
+        top: 8.98%;
+        bottom: 62.5%;
+        margin-top: 0;
+        height: 18.25rem;
+    }
+
+    @include desktop {
+        max-width: 63.75rem;
+        position: absolute;
+        left: 10.16%;
+        right: 10.16%;
+        top: 9.95%;
+        bottom: 60.43%;
+
+    }
+    
+    &__title {
+        @include moH1;
+        margin-left: .75rem;
+    }
+
+    &__header {
+        display: flex;
+        padding: 2rem 1.5rem 1.5rem 1.75rem;
+    }
+
+    &__border-bottom {
+        width: 343px;
+        border-bottom: 1px solid $cloud;
+
+        @include tablet {
+            width: 44rem;
+        }
+
+        @include desktop {
+            width: 63.75rem;
+        }
+    }
+
+    &__editIcon {
+        margin-left: auto;
+        fill:white;
+    }
+
+    &__info-titles {
+        @include moH4;
+        color: $slate;
+        margin-bottom: .25rem;
+    }
+
+    &__info-details {
+        @include moP2;
+        margin-bottom: 1rem;
+
+        @include tablet {
+            width: 275px;
+            margin-bottom: 2rem;
+            margin-right: 3rem;
+        }
+
+        @include desktop {
+            width: 450px;
+        }
+    }
+
+    &__stock{
+        text-transform: uppercase;
+        font-weight: 600;
+        color: #158463;
+        background: rgba(21, 132, 99, 0.07);
+        border-radius: 20px;
+        padding: 4px 0;
+        width: 68px;
+        padding-left: 9.5px;
+   
+    }
+
+    &__info {
+        margin: 1rem 1.5rem 1.5rem 1.5rem;
+
+        @include tablet {
+            display: flex;
+            margin-top: 24px;
+        }
+    }
+
+    &__availability {
+        display: flex;
+        justify-content: space-between;
+        width: 230px;
+    }
+
+    &__leftside {
+        @include tablet {
+            border-right: 1px solid $cloud;
+            margin-right: 3rem;
+        
+        }
+    }
+
+    &__quantity {
+        @include tablet {
+            margin-left: 2.5rem;
+        }
+
+        @include desktop {
+            margin-left: 7rem;
+        }
+    }
+}
