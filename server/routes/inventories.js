@@ -8,9 +8,7 @@ const WAREHOUSE_JSON_PATH = "data/warehouses.json";
 const INVENTORY_JSON_PATH = "data/inventories.json";
 
 const readFile =(filepath) => {
-
     let data = fs.readFileSync(filepath)
-    
     return JSON.parse(data);
 }
 
@@ -22,7 +20,18 @@ router.get("/", (req, res) => {
 });
 
 /* GET SINGLE INVENTORY ITEM*/
-router.get("/:itemId", (req, res) => {});
+router.get("/:itemId", (req, res) => {
+  const id = req.params.id;
+  const readInventory = readFile(INVENTORY_JSON_PATH)
+  const item = readInventory.find((singleInventory) => singleInventory.id == id);
+  res.status(200).json(item)
+
+  // const inventory = getWarehouses(res);
+  // if (warehouses) {
+  //     const index = getWarehouseIndex(res, req.params.warehouseId);
+  //     if (index) res.status(400).send(JSON.stringify(warehouses[index]));
+  // }
+});
 
 /* GET INVENTORY ITEMS FROM SPECIFIC WAREHOUSE */
 router.get("/:warehouseId", (req, res) => {});
