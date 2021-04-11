@@ -136,6 +136,7 @@ router.delete("/:itemId", (req, res) => {
             const index = inventories.findIndex((inv) => inv.id === id);
             if (index >= 0) {
                 inventories.splice(index, 1); // remove the inventory item.
+                inventoryJSON.save(inventories);
                 res.sendStatus(200);
             }
             else res.status(400).send(`No such warehouse exists with ID: ${id}`);
