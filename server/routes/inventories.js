@@ -21,7 +21,7 @@ router.get("/", (req, res) => {
 
 /* GET SINGLE INVENTORY ITEM*/
 router.get("/:itemId", (req, res) => {
-  const id = req.params.id;
+  const id = req.params.itemId;
   const readInventory = readFile(INVENTORY_JSON_PATH)
   const item = readInventory.find((singleInventory) => singleInventory.id == id);
   res.status(200).json(item)
