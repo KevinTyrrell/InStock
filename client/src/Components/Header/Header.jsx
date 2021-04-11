@@ -12,7 +12,6 @@ export default class Header extends Component {
   } else {
     this.setState({inventory: 'active', warehouse: ''})
   }
-    console.log(e.target.name)
   }
   render() {
     return (

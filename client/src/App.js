@@ -7,6 +7,7 @@ import InventoryList from "./components/InventoryList/InventoryList";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 
+
 class App extends React.Component {
   render() {
     return (
@@ -16,7 +17,7 @@ class App extends React.Component {
           <Route path="/warehouses" exact component={WarehousesList} />
           {/* <Route path="" component={}/> */}
           <Route path="/inventories" exact component={InventoryList} />
-          {/* <Route path="" component={}/> */}
+          <Route exact path="/newinventory" component={NewInventory} />
         </Switch>
         <Footer />
       </Router>
