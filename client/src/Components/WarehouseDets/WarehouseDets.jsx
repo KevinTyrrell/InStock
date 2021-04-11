@@ -5,6 +5,7 @@ import editBtn from "../../InStock Assets/Icons/edit-24px.svg";
 import chevRight from "../../InStock Assets/Icons/chevron_right-24px.svg";
 import deleteBtn from "../../InStock Assets/Icons/delete_outline-24px.svg";
 import axios from "axios";
+import sortArrows from "../../InStock Assets/Icons/sort-24px.svg";
 
 export class WarehouseDets extends Component {
   state = {
@@ -73,7 +74,77 @@ export class WarehouseDets extends Component {
             </div>
           </div>
         </div>
-        ;
+        <table>
+          <tr className="sortBar">
+            <th className="sortBar__items">
+              INVENTORY ITEM{" "}
+              <img className="sortBtn" src={sortArrows} alt="sort arrows" />
+            </th>
+            <th className="sortBar__cat">
+              CATEGORY{" "}
+              <img className="sortBtn" src={sortArrows} alt="sort arrows" />
+            </th>
+            <th className="sortBar__status">
+              STATUS{" "}
+              <img className="sortBtn" src={sortArrows} alt="sort arrows" />
+            </th>
+            <th className="sortBar__qty">
+              QTY <img className="sortBtn" src={sortArrows} alt="sort arrows" />
+            </th>
+            <th className="sortBar__name">
+              WAREHOUSE{" "}
+              <img className="sortBtn" src={sortArrows} alt="sort arrows" />
+            </th>
+            <h4 className="sortBar__actions">ACTIONS</h4>
+          </tr>
+          <div className="allInv">
+            <tr className="sortItems">
+              <td className="sortItems__name">
+                itemName
+                <img src={chevRight} alt="item info" />
+              </td>
+              <td className="sortItems__cat">category</td>
+              <td className="sortItems__stat">status</td>
+              <td className="sortItems__qty">quantity</td>
+              <td className="sortItems__ware">warehouseName</td>
+              <td>
+                <img id="deleteBtn" src={deleteBtn} alt="delete button" />
+                <img src={editBtn} alt="edit button" />
+              </td>
+            </tr>
+            <div className="itemStatus">
+              <div>
+                <h4 className="allInv__items">INVENTORY ITEM</h4>
+                <div className="itemArrow">
+                  <h4 className="allInv__items--item">itemName</h4>
+                  <img src={chevRight} alt="item info" />
+                </div>
+              </div>
+              <div className="allInv__status--fix">
+                <h4 className="allInv__status">STATUS</h4>
+                <h4 className="allInv__status--inOut">status</h4>
+              </div>
+            </div>
+            <div className="catQty">
+              <div>
+                <h4 className="allInv__cat">CATEGORY</h4>
+                <h4 className="allInv__cat--label">category</h4>
+              </div>
+              <div className="allInv__qty--fix">
+                <h4 className="allInv__qty">QTY</h4>
+                <h4 className="allInv__qty--num">quantity</h4>
+              </div>
+            </div>
+            <div className="warehouseName">
+              <h4 className="allInv__name">WAREHOUSE</h4>
+              <h4 className="allInv__name--ware">warehouseName</h4>
+            </div>
+            <div className="invBtns">
+              <img src={deleteBtn} alt="delete button" />
+              <img src={editBtn} alt="edit button" />
+            </div>
+          </div>
+        </table>
         <div className="inv">
           <div className="itemStatus">
             <div className="pos">

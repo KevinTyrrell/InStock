@@ -16,20 +16,32 @@ h4 {
   left: 4.27%;
   right: 4.27%;
   top: 136px;
+  @include desktop {
+    left: 10.16%;
+    right: 10.16%;
+  }
 
   &__header {
     padding-left: 1.5rem;
+    margin-top: 2rem;
     @include tablet {
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding-right: 1.5rem;
       padding-top: 0.5rem;
+      margin-top: 2rem;
+      margin-bottom: 1.5rem;
     }
   }
 
   &__title {
     @include moH1;
+    margin-bottom: 1rem;
+    @include tablet {
+      @include dtH1;
+      margin-bottom: 0;
+    }
   }
 }
 
@@ -45,6 +57,7 @@ h4 {
     width: 185px;
     height: 38px;
     margin-right: 1rem;
+    @include dtP2;
   }
 }
 
@@ -62,6 +75,7 @@ h4 {
     margin: 0;
     width: 128px;
     height: 38px;
+    @include dtH3;
   }
 }
 
@@ -209,11 +223,16 @@ h4 {
     display: flex;
     background: rgba(247, 248, 249, 0.7);
     height: 40px;
+    min-width: 704px;
+
     margin-left: -2px;
     margin-right: -2px;
     align-items: center;
     padding-left: 2rem;
     margin-bottom: 1rem;
+    @include desktop {
+      min-width: 1150px;
+    }
 
     &__items {
       @include dtH4;
@@ -300,4 +319,8 @@ th {
 
 #deleteBtn {
   margin-right: 1rem;
+}
+
+.invTable {
+  width: 100%;
 }
