@@ -6,6 +6,7 @@ const path = require("path");
 
 const WAREHOUSE_JSON_PATH = "data/warehouses.json";
 const INVENTORY_JSON_PATH = "data/inventories.json";
+const inventoryJSON = new JSONData("inventories");
 
 const readFile =(filepath) => {
     let data = fs.readFileSync(filepath)
@@ -127,6 +128,20 @@ router.post("/", (req, res) => {
     })
 
 /* DELETE A INVENTORY ITEM */
-router.delete("/itemId", (req, res) => {});
+router.delete("/:itemId", (req, res) => {
+    const inventories = inventoryJSON.load(err => res.status(400).send(err));
+    if (inventories) {
+        const id = req.params.id;
+        if (id) {
+            const index = inventories.findIndex((inv) => inv.id === id);
+            if (index >= 0) {
+                inventories.splice(index, 1); // remove the inventory item.
+                res.sendStatus(200);
+            }
+            else res.status(400).send(`No such warehouse exists with ID: ${id}`);
+        }
+        else res.status(400).send("Required ID parameter was null or unspecified.");
+    }
+});
 
 module.exports = router
