@@ -6,6 +6,7 @@ import WarehousesList from "./components/WarehousesList/WarehousesList";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import WarehouseDets from "./components/WarehouseDets/WarehouseDets";
+import InventoryList from "./components/InventoryList/InventoryList";
 
 class App extends React.Component {
   render() {
@@ -13,9 +14,10 @@ class App extends React.Component {
       <Router>
         <Header />
         <Switch>
-          {/* <Route exact path="/newinventory" component={NewInventory} /> */}
           <Route path="/warehouses" exact component={WarehousesList} />
           <Route path="/warehouses/:id" exact component={WarehouseDets} />
+          <Route path="/inventories" exact component={InventoryList} />
+          {/* <Route exact path="/newinventory" component={NewInventory} /> */}
         </Switch>
         <Footer />
       </Router>
