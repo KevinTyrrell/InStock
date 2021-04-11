@@ -1,5 +1,8 @@
 @use '../../partials/partial' as *;
 
+* {
+  font-family: "Titillium Web";
+}
 
 .header {
   @include mobile {

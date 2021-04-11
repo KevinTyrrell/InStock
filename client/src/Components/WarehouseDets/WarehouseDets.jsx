@@ -36,46 +36,44 @@ export class WarehouseDets extends Component {
   render() {
     return (
       <section className="warehouse">
-        {this.state.currWarehouse.map((ware) => {
-          <div>
-            <div className="warehouse__inline">
-              <div className="inline">
-                <img src={backArrow} alt="back arrow" />
-                <h1 className="warehouse__name">Ware Name</h1>
-              </div>
-              <img src={editBtn} id="edit" alt="edit button" />
+        <div>
+          <div className="warehouse__inline">
+            <div className="inline">
+              <img src={backArrow} alt="back arrow" />
+              <h1 className="warehouse__name">Ware Name</h1>
             </div>
-            <div className="details">
+            <img src={editBtn} id="edit" alt="edit button" />
+          </div>
+          <div className="details">
+            <div>
+              <h4 className="details__address">WAREHOUSE ADDRESS:</h4>
+              <h4 className="details__address--loc">
+                123 Replace Me,
+                <br />
+                After, Style **
+              </h4>
+            </div>
+            <div className="contact">
               <div>
-                <h4 className="details__address">WAREHOUSE ADDRESS:</h4>
-                <h4 className="details__address--loc">
-                  123 Replace Me,
+                <h4 className="contact__name">CONTACT NAME:</h4>
+                <h4 className="contact__name--pos">
+                  Contact Name
                   <br />
-                  After, Style **
+                  Contact Position
                 </h4>
               </div>
-              <div className="contact">
-                <div>
-                  <h4 className="contact__name">CONTACT NAME:</h4>
-                  <h4 className="contact__name--pos">
-                    Contact Name
-                    <br />
-                    Contact Position
-                  </h4>
-                </div>
-                <div className="contact__inline">
-                  <h4 className="contact__info">CONTACT INFORMATION:</h4>
-                  <h4 className="contact__info--phone">
-                    +1-561-235-8490
-                    <br />
-                    alexa@google.com
-                  </h4>
-                </div>
+              <div className="contact__inline">
+                <h4 className="contact__info">CONTACT INFORMATION:</h4>
+                <h4 className="contact__info--phone">
+                  +1-561-235-8490
+                  <br />
+                  alexa@google.com
+                </h4>
               </div>
             </div>
-          </div>;
-        })}
-
+          </div>
+        </div>
+        ;
         <div className="inv">
           <div className="itemStatus">
             <div className="pos">
