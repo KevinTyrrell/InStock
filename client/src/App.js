@@ -17,6 +17,9 @@ class App extends React.Component {
           <Route path="/inventories/:itemId" component={SingleInventory} />
          {/* <Route path="" component={}/>
          <Route path="" component={}/> */}
+          {/* <Route path="" component={}/> */}
+          <Route path="/inventories" exact component={InventoryList} />
+          <Route exact path="/newinventory" component={NewInventory} />
         </Switch>
         <Footer />
       </Router>
