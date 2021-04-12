@@ -136,7 +136,7 @@ $out: #c94515;
 //**MIXINS**
 
 @mixin mobile {
-  @media (min-width: 320px) {
+  @media (min-width: 375px) {
     @content;
   }
 }

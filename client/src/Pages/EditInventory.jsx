@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import ItemDetails from "../Components/ItemDetails/ItemDetails";
 import ItemAvailability from "../Components/ItemAvailability/ItemAvailability";
+import "./NewInventory.scss"
 
 /*images*/
 import ArrowBack from "../InStock Assets/Icons/arrow_back-24px.svg";
@@ -17,34 +18,45 @@ export class EditInventory extends Component {
             category: false,
 			quantity: false,
             warehouseName: false
-        }
+        },
+		currentItem: {}
 	};
 
 	componentDidMount() {
 
-		//Initial api calls to generate category and warehouse list
-		axios
-			.get("/warehouses")
-			.then((response) => {
-				this.setState({ warehouseList: [...response.data] });
-			})
-			.catch((err) => {
-				console.log(err);
-			});
-
-		let catArr = [];
-
-		axios
-			.get("/inventories")
-			.then((response) => {
-				response.data.forEach((item) => {
-					if (
-						catArr.findIndex((category) => category === item.category) === -1
-					) {
-						catArr.push(item.category);
-					}
+				//Initial api calls to generate category and warehouse list
+				axios
+				.get("/warehouses")
+				.then((response) => {
+					this.setState({ warehouseList: [...response.data] });
+				})
+				.catch((err) => {
+					console.log(err);
 				});
-				this.setState({ categoryList: [...catArr] });
+	
+			let catArr = [];
+	
+			axios
+				.get("/inventories")
+				.then((response) => {
+					response.data.forEach((item) => {
+						if (
+							catArr.findIndex((category) => category === item.category) === -1
+						) {
+							catArr.push(item.category);
+						}
+					});
+					this.setState({ categoryList: [...catArr] });
+				})
+				.catch((err) => {
+					console.log(err);
+				});
+
+
+		axios
+			.get(`/inventories/${this.props.match.params.id}`)
+			.then((response) => {
+				this.setState({ currentItem: response.data });
 			})
 			.catch((err) => {
 				console.log(err);
@@ -127,11 +139,13 @@ export class EditInventory extends Component {
 						categoryList={this.state.categoryList}
 						submitted={this.state.submitted}
 						testErrors={this.state.testErrors}
+						currentItem={this.state.currentItem}
 					/>
 					<ItemAvailability
 						warehouseList={this.state.warehouseList}
 						submitted={this.state.submitted}
 						testErrors={this.state.testErrors}
+						currentItem={this.state.currentItem}
 					/>
 				</div>
 				<div className='button__container'>
