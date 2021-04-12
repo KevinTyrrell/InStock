@@ -4,8 +4,13 @@ const fs = require("fs");
 const { v4: uuidv4 } = require("uuid");
 const path = require("path");
 
+const JSONData = require("./../util/json-data.js");
+
 const WAREHOUSE_JSON_PATH = "data/warehouses.json";
 const INVENTORY_JSON_PATH = "data/inventories.json";
+const inventoryJSON = new JSONData("inventories");
+
+const inventoryJSON = new JSONData("inventories");
 
 const readFile = (filepath) => {
   let data = fs.readFileSync(filepath);
@@ -36,44 +41,24 @@ router.get("/:itemId", (req, res) => {
 });
 
 /* GET INVENTORY ITEMS FROM SPECIFIC WAREHOUSE */
-// router.get("/:warehouseId", (req, res) => {
-//   data = [
-//     {
-//       id: "9b4f79ea-0e6c-4e59-8e05-afd933d0b3d3",
-//       warehouseID: "2922c286-16cd-4d43-ab98-c79f698aeab0",
-//       warehouseName: "Manhattan",
-//       itemName: "Television",
-//       description:
-//         'This 50", 4K LED TV provides a crystal-clear picture and vivid colors.',
-//       category: "Electronics",
-//       status: "In Stock",
-//       quantity: 500,
-//     },
-//     {
-//       id: "83433026-ca32-4c6d-bd86-a39ee8b7303e",
-//       warehouseID: "2922c286-16cd-4d43-ab98-c79f698aeab0",
-//       warehouseName: "Manhattan",
-//       itemName: "Gym Bag",
-//       description:
-//         "Made out of military-grade synthetic materials, this gym bag is highly durable, water resistant, and easy to clean.",
-//       category: "Gear",
-//       status: "Out of Stock",
-//       quantity: 0,
-//     },
-//     {
-//       id: "a193a6a7-42ab-4182-97dc-555ee85e7486",
-//       warehouseID: "2922c286-16cd-4d43-ab98-c79f698aeab0",
-//       warehouseName: "Manhattan",
-//       itemName: "Hoodie",
-//       description:
-//         "A simple 100% cotton hoodie, this is an essential piece for any wardrobe.",
-//       category: "Apparel",
-//       status: "Out of Stock",
-//       quantity: 0,
-//     },
-//   ];
-//   res.send(data);
-// });
+router.get("/:warehouseId", (req, res) => {
+  const inventories = inventoryJSON.load((err) => res.status(400).send(err));
+  if (!inventories) return;
+  const id = req.params.itemId;
+  if (id) {
+    const items = [];
+    inventories
+      .filter((inv) => inv.id === id)
+      .forEach((inv) => items.push(inv));
+    // TODO: Report an error if no such warehouse exists with that ID? Not sure.
+    // res.status(400).send(`No such warehouse exists with ID: ${id}`);
+    res.status(200).send(JSON.parse(inventories));
+  } else
+    res
+      .status(400)
+      .res.status(400)
+      .send("Required ID parameter was null or unspecified.");
+});
 
 /* CREATE A NEW INVENTORY ITEM*/
 router.post("/", (req, res) => {
@@ -180,6 +165,20 @@ router.patch("/:itemId", (req, res) => {
 });
 
 /* DELETE A INVENTORY ITEM */
-router.delete("/itemId", (req, res) => {});
+router.delete("/:itemId", (req, res) => {
+  const inventories = inventoryJSON.load((err) => res.status(400).send(err));
+  if (inventories) {
+    const id = req.params.id;
+    if (id) {
+      const index = inventories.findIndex((inv) => inv.id === id);
+      if (index >= 0) {
+        inventories.splice(index, 1); // remove the inventory item.
+        inventoryJSON.save(inventories);
+        res.sendStatus(200);
+      } else res.status(400).send(`No such warehouse exists with ID: ${id}`);
+    } else
+      res.status(400).send("Required ID parameter was null or unspecified.");
+  }
+});
 
 module.exports = router;
