@@ -4,29 +4,29 @@ import backArrow from "../../InStock Assets/Icons/arrow_back-24px.svg";
 import editBtn from "../../InStock Assets/Icons/edit-24px.svg";
 import chevRight from "../../InStock Assets/Icons/chevron_right-24px.svg";
 import deleteBtn from "../../InStock Assets/Icons/delete_outline-24px.svg";
-import axios from "axios";
+// import axios from "axios";
 import sortArrows from "../../InStock Assets/Icons/sort-24px.svg";
 
 export class WarehouseDets extends Component {
-  state = {
-    currware: [],
-  };
-
   // state = {
-  //   currInventory: null,
+  //   currentWarehouse: [],
   // };
 
-  componentDidMount() {
-    axios
-      .get("/warehouses/:warehouseId")
-      .then((res) => {
-        this.setState({ currware: res.target.value });
-        console.log(currware);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
+  // // state = {
+  // //   currInventory: null,
+  // // };
+
+  // componentDidMount() {
+  //   // let id = this.state.id;
+  //   axios
+  //     .get(`/warehouses/2922c286-16cd-4d43-ab98-c79f698aeab0`)
+  //     .then((res) => {
+  //       this.setState({ currentWarehouse: res.data });
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // }
 
   //   componentDidMount() {
   //     axios
@@ -40,49 +40,49 @@ export class WarehouseDets extends Component {
   render() {
     return (
       <section className="warehouse">
-        {this.state.currware.map((currWare) => {
-          return (
+        {/* {this.state.currentWarehouse.map((currWare) => {
+          return ( */}
+        <div>
+          <div className="warehouse__inline">
+            <div className="inline">
+              <img src={backArrow} alt="back arrow" />
+              <h1 className="warehouse__name">warehouse name</h1>
+            </div>
+            <img src={editBtn} id="edit" alt="edit button" />
+          </div>
+          <div className="details">
             <div>
-              <div className="warehouse__inline">
-                <div className="inline">
-                  <img src={backArrow} alt="back arrow" />
-                  <h1 className="warehouse__name">ware name</h1>
-                </div>
-                <img src={editBtn} id="edit" alt="edit button" />
+              <h4 className="details__address">WAREHOUSE ADDRESS:</h4>
+              <h4 className="details__address--loc">
+                123 Replace Me,
+                <br />
+                After, Style **
+              </h4>
+            </div>
+            <div className="contact">
+              <div>
+                <h4 className="contact__name">CONTACT NAME:</h4>
+                <h4 className="contact__name--pos">
+                  Contact Name
+                  <br />
+                  Contact Position
+                </h4>
               </div>
-              <div className="details">
-                <div>
-                  <h4 className="details__address">WAREHOUSE ADDRESS:</h4>
-                  <h4 className="details__address--loc">
-                    123 Replace Me,
-                    <br />
-                    After, Style **
-                  </h4>
-                </div>
-                <div className="contact">
-                  <div>
-                    <h4 className="contact__name">CONTACT NAME:</h4>
-                    <h4 className="contact__name--pos">
-                      Contact Name
-                      <br />
-                      Contact Position
-                    </h4>
-                  </div>
-                  <div className="contact__inline">
-                    <h4 className="contact__info">CONTACT INFORMATION:</h4>
-                    <h4 className="contact__info--phone">
-                      +1-561-235-8490
-                      <br />
-                      alexa@google.com
-                    </h4>
-                  </div>
-                </div>
+              <div className="contact__inline">
+                <h4 className="contact__info">CONTACT INFORMATION:</h4>
+                <h4 className="contact__info--phone">
+                  +1-561-235-8490
+                  <br />
+                  alexa@google.com
+                </h4>
               </div>
             </div>
-          );
-        })}
+          </div>
+        </div>
+        {/* );
+        })} */}
 
-        <table>
+        <table className="invTable">
           <tr className="sortBar">
             <th className="sortBar__items">
               INVENTORY ITEM{" "}
