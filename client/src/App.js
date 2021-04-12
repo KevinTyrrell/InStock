@@ -3,6 +3,7 @@ import "./App.scss";
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import WarehousesList from "./Components/WarehousesList/WarehousesList";
+import AddWarehouse from './Components/NewWarehouse/AddWarehouse'
 import Header from './Components/Header/Header';
 import Footer from './Components/Footer/Footer';
 import SingleInventory from './Components/SingleInventory/SingleInventory';
@@ -14,6 +15,7 @@ class App extends React.Component {
     return (
       <Router>
         <Header />
+        <AddWarehouse />
         <Switch>
           <Route path="/warehouses" exact component={WarehousesList} />
           <Route path="/inventories/:itemId" component={SingleInventory} />
