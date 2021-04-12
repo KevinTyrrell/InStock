@@ -4,8 +4,12 @@ const fs = require("fs");
 const { v4: uuidv4 } = require("uuid");
 const path = require("path");
 
+const JSONData = require("./../util/json-data.js");
+
 const WAREHOUSE_JSON_PATH = "data/warehouses.json";
 const INVENTORY_JSON_PATH = "data/inventories.json";
+
+const inventoryJSON = new JSONData("inventories");
 
 const readFile =(filepath) => {
     let data = fs.readFileSync(filepath)
@@ -34,7 +38,19 @@ router.get("/:itemId", (req, res) => {
 });
 
 /* GET INVENTORY ITEMS FROM SPECIFIC WAREHOUSE */
-router.get("/:warehouseId", (req, res) => {});
+router.get("/:warehouseId", (req, res) => {
+    const inventories = inventoryJSON.load((err) => res.status(400).send(err)); if (!inventories) return;
+    const id =  req.params.itemId;
+    if (id) {
+        const items = [ ];
+        inventories.filter(inv => inv.id === id)
+                   .forEach(inv => items.push(inv));
+        // TODO: Report an error if no such warehouse exists with that ID? Not sure.
+        // res.status(400).send(`No such warehouse exists with ID: ${id}`);
+        res.status(200).send(JSON.parse(inventories));
+    }
+    else res.status(400).res.status(400).send("Required ID parameter was null or unspecified.");
+});
 
 /* CREATE A NEW INVENTORY ITEM*/
 router.post("/", (req, res) => {
