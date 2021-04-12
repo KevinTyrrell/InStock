@@ -11,37 +11,28 @@ export class EditWarehouse extends Component {
 		submitted: false,
         Errors: {
             warehouseName: false,
-            streetAddress: false,
+            address: false,
             city: false,
             country: false,
 			contactName: false,
             position: false,
             phoneNumber: false,
             email: false
-        }
+        },
+		currentWarehouse: {}
 	};
 
 	componentDidMount() {
 
-		//Initial api calls to generate category and warehouse list
+		//Initial api calls to generate warehouse INfo
 		axios
-			.get("/warehouses")
-			.then((response) => {
-				
-			})
-			.catch((err) => {
-				console.log(err);
-			});
-
-
-		axios
-			.get("/inventories")
-			.then((response) => {
-			
-			})
-			.catch((err) => {
-				console.log(err);
-			});
+		.get(`/warehouses/${this.props.match.params.id}`)
+		.then((response) => {
+			this.setState({ currentWarehouse: response.data });
+		})
+		.catch((err) => {
+			console.log(err);
+		});
 	}
 
 	render() {
@@ -53,7 +44,7 @@ export class EditWarehouse extends Component {
 
 			const {
 				warehouseName,
-                    streetAddress,
+                    address,
                     city,
                     country,
                     contactName,
@@ -63,11 +54,11 @@ export class EditWarehouse extends Component {
 			} = e.target;
 
 				//If any fields are empty
-    if( warehouseName.value === '' || streetAddress.value === '' || city.value === '' || country.value === '' || contactName.value === '' || position.value === '' || phoneNumber.value === '' || email.value === '' ) {
+    if( warehouseName.value === '' || address.value === '' || city.value === '' || country.value === '' || contactName.value === '' || position.value === '' || phoneNumber.value === '' || email.value === '' ) {
 			//Set error flags according to form inputs
 		this.setState({Errors: {
 			warehouseName: warehouseName.value === '' ? true : false,
-            streetAddress: streetAddress.value === '' ? true : false,
+            address: address.value === '' ? true : false,
             city: city.value === '' ? true : false,
             country: country.value === '' ? true : false,
 			contactName: contactName.value === '' ? true : false,
@@ -81,26 +72,28 @@ export class EditWarehouse extends Component {
 
 			//Create new Item object
 				const newItem = {
-					warehouseName: warehouseName.value,
-            streetAddress: streetAddress.value,
+					name: warehouseName.value,
+            address: address.value,
             city: city.value,
             country: country.value,
-			contactName: contactName.value,
-            position: position.value,
-            phoneNumber: phoneNumber.value,
-            email: email.value
+			contact: {
+				name: contactName.value,
+				position: position.value,
+				phone: phoneNumber.value,
+				email: email.value
+			}
 				};
 
-                console.log(newItem);
+                console.log(JSON.stringify(newItem));
 
-				axios.post("/something", newItem)
+				axios.patch(`/warehouses/${this.props.match.params.id}`, newItem)
 				.then(response =>
 					console.log(response.data) )
 				.catch(err => {console.error(err)})
 
                 this.setState({Errors: {
                     warehouseName: false,
-                    streetAddress: false,
+                    address: false,
                     city: false,
                     country: false,
                     contactName: false,
@@ -131,10 +124,12 @@ export class EditWarehouse extends Component {
 					<WarehouseDetails
 						submitted={this.state.submitted}
 						Errors={this.state.Errors}
+						currentWarehouse={this.state.currentWarehouse}
 					/>
 					<ContactDetails
 						submitted={this.state.submitted}
 						Errors={this.state.Errors}
+						currentWarehouse={this.state.currentWarehouse.contact}
 					/>
 				</div>
 				<div className='button__container'>

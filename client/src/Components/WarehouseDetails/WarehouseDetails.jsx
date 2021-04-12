@@ -34,22 +34,24 @@ export class WarehouseDetails extends Component {
 					type='text'
 					placeholder='Warehouse Name'
 					name='warehouseName'
+					defaultValue={this.props.currentWarehouse ? this.props.currentWarehouse.name : ''}
 					
 				/>
 				<label className="error__message" style={{ display: this.state.showErrors.warehouseName ? "flex" : "none" }} htmlFor='warehouseName'>
 					This field is required
 				</label>
-				<label className='input__title' htmlFor='streetAddress'>
+				<label className='input__title' htmlFor='address'>
 					Street Address
 				</label>
 				<input
-					className={this.state.showErrors.streetAddress ? "form__input-radius error" : "form__input-radius"}
+					className={this.state.showErrors.address ? "form__input-radius error" : "form__input-radius"}
 					type='text'
 					placeholder='Street Address'
-					name='streetAddress'
+					name='address'
+					defaultValue={this.props.currentWarehouse ? this.props.currentWarehouse.address : ''}
 					
 				/>
-				<label className="error__message" style={{ display: this.state.showErrors.streetAddress ? "flex" : "none" }} htmlFor='streetAddress'>
+				<label className="error__message" style={{ display: this.state.showErrors.address ? "flex" : "none" }} htmlFor='address'>
 					This field is required
 				</label>
 				<label className='input__title' htmlFor='city'>
@@ -60,6 +62,7 @@ export class WarehouseDetails extends Component {
 					type='text'
 					placeholder='City'
 					name='city'
+					defaultValue={this.props.currentWarehouse ? this.props.currentWarehouse.city : ''}
 					
 				/>
 				<label className="error__message" style={{ display: this.state.showErrors.city ? "flex" : "none" }} htmlFor='city'>
@@ -73,6 +76,7 @@ export class WarehouseDetails extends Component {
 					type='text'
 					placeholder='Country'
 					name='country'
+					defaultValue={this.props.currentWarehouse ? this.props.currentWarehouse.country : ''}
 					
 				/>
 				<label className="error__message" style={{ display: this.state.showErrors.country ? "flex" : "none" }} htmlFor='country'>

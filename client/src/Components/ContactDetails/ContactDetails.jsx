@@ -23,6 +23,8 @@ export class ContactDetails extends Component {
 	}
 
 	render() {
+
+		
 		return (
 			<section className='form__section form__section-details'>
 				<label className='section__title'>Contact Details</label>
@@ -34,6 +36,7 @@ export class ContactDetails extends Component {
 					type='text'
 					placeholder='Contact Name'
 					name='contactName'
+					defaultValue={this.props.currentWarehouse ? this.props.currentWarehouse.name : ''}
 					
 				/>
 				<label className="error__message" style={{ display: this.state.showErrors.contactName ? "flex" : "none" }} htmlFor='contactName'>
@@ -47,6 +50,7 @@ export class ContactDetails extends Component {
 					type='text'
 					placeholder='Position'
 					name='position'
+					defaultValue={this.props.currentWarehouse ? this.props.currentWarehouse.position : ''}
 					
 				/>
 				<label className="error__message" style={{ display: this.state.showErrors.position ? "flex" : "none" }} htmlFor='position'>
@@ -60,6 +64,7 @@ export class ContactDetails extends Component {
 					type='text'
 					placeholder='Phone Number'
 					name='phoneNumber'
+					defaultValue={this.props.currentWarehouse ? this.props.currentWarehouse.phone : ''}
 					
 				/>
 				<label className="error__message" style={{ display: this.state.showErrors.phoneNumber ? "flex" : "none" }} htmlFor='phoneNumber'>
@@ -73,6 +78,7 @@ export class ContactDetails extends Component {
 					type='text'
 					placeholder='Email'
 					name='email'
+					defaultValue={this.props.currentWarehouse ? this.props.currentWarehouse.email : ''}
 					
 				/>
 				<label className="error__message" style={{ display: this.state.showErrors.email ? "flex" : "none" }} htmlFor='email'>

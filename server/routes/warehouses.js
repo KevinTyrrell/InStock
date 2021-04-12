@@ -15,6 +15,16 @@ function getWarehouses(res) {
   });
 }
 
+const WAREHOUSE_JSON_PATH = 'data/warehouses.json'
+const INVENTORY_JSON_PATH = 'data/inventories.json'
+
+const readFile =(path) => {
+
+  let data = fs.readFileSync(path)
+  
+  return JSON.parse(data);
+}
+
 // Returns the index of the first warehouse matching an ID.
 function getWarehouseIndex(warehouses, res, id) {
   if (id) {

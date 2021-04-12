@@ -33,6 +33,12 @@ class App extends React.Component {
             return <EditInventory {...routerProps} />;
           }} 
          />
+          <Route
+         path="/warehouse/:id"
+         render={(routerProps) => {
+            return <EditWarehouse {...routerProps} />;
+          }} 
+         />
           {/* <Route path="" component={}/>
          <Route path="" component={}/> */}
           <Route path="/warehouses/:warehouseId" component={WarehouseDets} />
