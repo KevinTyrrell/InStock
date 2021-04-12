@@ -16,7 +16,7 @@ class App extends React.Component {
     return (
       <Router>
         <Header />
-       {/*  <AddWarehouse /> */}
+        {/* <AddWarehouse /> */}
         <Switch>
           {/* <Route path="/warehouses" exact component={WarehousesList} />
           <Route path="/inventories/:itemId" component={SingleInventory} />
@@ -29,6 +29,8 @@ class App extends React.Component {
          />
           {/* <Route path="" component={}/>
          <Route path="" component={}/> */}
+          <Route path="/warehouses/:warehouseId" component={WarehouseDets} />
+          {/* <Route path="" component={}/> */}
           {/* <Route path="" component={}/> */}
           <Route path="/inventories" exact component={InventoryList} />
           {/* <Route exact path="/newinventory" component={NewInventory} /> */}
