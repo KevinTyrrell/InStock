@@ -12,7 +12,6 @@ import AddWarehouse from "./Components/NewWarehouse/Addwarehouse";
 import SingleInventory from "./Components/SingleInventory/SingleInventory";
 import WarehouseDets from "./Components/WarehouseDets/WarehouseDets";
 import InventoryList from "./Components/InventoryList/InventoryList";
-
 class App extends React.Component {
   render() {
     return (
@@ -27,6 +26,15 @@ class App extends React.Component {
          {/* <Route path="" component={}/> */}
           <Route path="/warehouses" exact component={WarehousesList} />
           <Route path="/inventories/:itemId" component={SingleInventory} />
+          <Route path="/warehouses/:id" component={WarehouseDets} /> */}
+          <Route
+         path="/inventory/:id"
+         render={(routerProps) => {
+            return <EditInventory {...routerProps} />;
+          }} 
+         />
+          {/* <Route path="" component={}/>
+         <Route path="" component={}/> */}
           <Route path="/warehouses/:warehouseId" component={WarehouseDets} />
           {/* <Route path="" component={}/> */}
           {/* <Route path="" component={}/> */}

@@ -28,18 +28,8 @@ export class ItemAvailability extends Component {
 	}
 
 	render() {
-		const toggleQuantity = (e) => {
-			const { value } = e.target;
-
-
+		const toggleQuantity = () => {
 			this.setState({showQuantity: !this.state.showQuantity})
-			/* value === "Out of Stock"
-				? this.setState({
-						showQuantity: false,
-				  })
-				: this.setState({
-						showQuantity: true,
-				  }); */
 		};
 
 		return (
@@ -54,7 +44,8 @@ export class ItemAvailability extends Component {
 						className='form__input'
 						type='radio'
 						name='status'
-						value='In Stock'
+						value=""
+						defaultValue={this.props.currentItem ? this.props.currentItem.status : 'In Stock'}
 						defaultChecked
 					/>
 					<label
@@ -89,6 +80,7 @@ export class ItemAvailability extends Component {
 							placeholder='0'
 							min='1'
 							name='quantity'
+							value={this.props.currentItem ? this.props.currentItem.quantity : ''}
 						/>
 						<label
 							className='error__message'
@@ -105,21 +97,22 @@ export class ItemAvailability extends Component {
 				<label className='input__title' htmlFor='warehouseName'>
 					Warehouse
 				</label>
-				<select
+				<select value={this.props.currentItem ? this.props.currentItem.warehouseName : ''}
 					className={
 						this.state.showErrors.warehouseName
 							? "form__input-radius form__input-drop error"
 							: "form__input-radius form__input-drop"
 					}
 					name='warehouseName'>
-					<option value=''>Please Select</option>
+					<option defaultValue=''>Please Select</option>
 					{this.props.warehouseList.map((warehouse, i) => {
 						return (
-							<option key={i} value={warehouse.name}>
+							<option key={i} defaultValue={warehouse.name}>
 								{warehouse.name}
 							</option>
 						);
 					})}
+					
 				</select>
 				<label
 					className='error__message'
