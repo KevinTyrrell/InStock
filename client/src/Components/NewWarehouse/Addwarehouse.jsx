@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import './Addwarehouse.scss';
+import './AddWarehouse.scss';
 import arrow from '../../InStock Assets/Icons/arrow_back-24px.svg'
 
   
