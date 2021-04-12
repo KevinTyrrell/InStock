@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './Header.scss';
-import logo from '../../InStock Assets/Logo/InStock-Logo_1x.png';
+import logo from '../../InStock Assets/Logo/InStock-Logo.svg';
 
 export default class Header extends Component {
   state = {

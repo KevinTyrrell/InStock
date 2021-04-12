@@ -8,18 +8,30 @@ import Footer from './Components/Footer/Footer';
 import NewInventory from './Pages/NewInventory'
 import EditInventory from './Pages/EditInventory'
 import EditWarehouse from './Pages/EditWarehouse'
+import AddWarehouse from "./Components/NewWarehouse/Addwarehouse";
+import SingleInventory from "./Components/SingleInventory/SingleInventory";
+import WarehouseDets from "./Components/WarehouseDets/WarehouseDets";
+import InventoryList from "./Components/InventoryList/InventoryList";
 
 class App extends React.Component {
   render() {
     return (
       <Router>
         <Header />
+        {/* <AddWarehouse /> */}
         <Switch>
         <Route exact path="/editinventory" component={EditInventory} />
           <Route exact path="/warehouses" component={WarehousesList} />
            <Route exact path="/newinventory" component={NewInventory}/>
          <Route exact path="/editwarehouse" component={EditWarehouse}/>
          {/* <Route path="" component={}/> */}
+          <Route path="/warehouses" exact component={WarehousesList} />
+          <Route path="/inventories/:itemId" component={SingleInventory} />
+          <Route path="/warehouses/:warehouseId" component={WarehouseDets} />
+          {/* <Route path="" component={}/> */}
+          {/* <Route path="" component={}/> */}
+          <Route path="/inventories" exact component={InventoryList} />
+          {/* <Route exact path="/newinventory" component={NewInventory} /> */}
         </Switch>
         <Footer />
       </Router>

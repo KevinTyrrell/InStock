@@ -1,6 +1,6 @@
 @use '../../partials/partial' as *;
 
-footer {
+.footer {
   @include mobile {
     position: absolute;
     font-size: 11px;
