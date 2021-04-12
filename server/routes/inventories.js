@@ -4,6 +4,8 @@ const fs = require("fs");
 const { v4: uuidv4 } = require("uuid");
 const path = require("path");
 
+const JSONData = require("./../util/json-data.js");
+
 const WAREHOUSE_JSON_PATH = "data/warehouses.json";
 const INVENTORY_JSON_PATH = "data/inventories.json";
 const inventoryJSON = new JSONData("inventories");
