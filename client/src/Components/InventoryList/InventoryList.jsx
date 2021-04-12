@@ -37,7 +37,7 @@ export class InventoryList extends Component {
             <button id="addBtn">+ Add New Item</button>
           </div>
         </div>
-        <table>
+        <table className="invTable">
           <tr className="sortBar">
             <th className="sortBar__items">
               INVENTORY ITEM{" "}

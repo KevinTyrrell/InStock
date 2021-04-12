@@ -7,6 +7,7 @@ import AddWarehouse from "./components/NewWarehouse/Addwarehouse";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import SingleInventory from "./components/SingleInventory/SingleInventory";
+import WarehouseDets from "./components/WarehouseDets/WarehouseDets";
 import InventoryList from "./components/InventoryList/InventoryList";
 
 class App extends React.Component {
@@ -18,8 +19,8 @@ class App extends React.Component {
         <Switch>
           <Route path="/warehouses" exact component={WarehousesList} />
           <Route path="/inventories/:itemId" component={SingleInventory} />
-          {/* <Route path="" component={}/>
-         <Route path="" component={}/> */}
+          <Route path="/warehouses/:warehouseId" component={WarehouseDets} />
+          {/* <Route path="" component={}/> */}
           {/* <Route path="" component={}/> */}
           <Route path="/inventories" exact component={InventoryList} />
           {/* <Route exact path="/newinventory" component={NewInventory} /> */}

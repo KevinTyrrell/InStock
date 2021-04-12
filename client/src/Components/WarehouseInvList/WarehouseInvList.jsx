@@ -54,10 +54,6 @@ export class InventoryList extends Component {
             <th className="sortBar__qty">
               QTY <img className="sortBtn" src={sortArrows} alt="sort arrows" />
             </th>
-            <th className="sortBar__name">
-              WAREHOUSE{" "}
-              <img className="sortBtn" src={sortArrows} alt="sort arrows" />
-            </th>
             <h4 className="sortBar__actions">ACTIONS</h4>
           </tr>
 
@@ -72,7 +68,7 @@ export class InventoryList extends Component {
                   <td className="sortItems__cat">{inv.category}</td>
                   <td className="sortItems__stat">{inv.status}</td>
                   <td className="sortItems__qty">{inv.quantity}</td>
-                  <td className="sortItems__ware">{inv.warehouseName}</td>
+
                   <td>
                     <img id="deleteBtn" src={deleteBtn} alt="delete button" />
                     <img src={editBtn} alt="edit button" />
@@ -100,10 +96,6 @@ export class InventoryList extends Component {
                     <h4 className="allInv__qty">QTY</h4>
                     <h4 className="allInv__qty--num">{inv.quantity}</h4>
                   </div>
-                </div>
-                <div className="warehouseName">
-                  <h4 className="allInv__name">WAREHOUSE</h4>
-                  <h4 className="allInv__name--ware">{inv.warehouseName}</h4>
                 </div>
                 <div className="invBtns">
                   <img src={deleteBtn} alt="delete button" />
