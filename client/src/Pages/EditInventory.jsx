@@ -2,12 +2,12 @@ import React, { Component } from "react";
 import axios from "axios";
 import ItemDetails from "../Components/ItemDetails/ItemDetails";
 import ItemAvailability from "../Components/ItemAvailability/ItemAvailability";
+import "./NewInventory.scss"
 
 /*images*/
 import ArrowBack from "../InStock Assets/Icons/arrow_back-24px.svg";
-import "./NewInventory.scss";
 
-export class NewInventory extends Component {
+export class EditInventory extends Component {
 	state = {
 		warehouseList: [],
 		categoryList: [],
@@ -18,34 +18,45 @@ export class NewInventory extends Component {
             category: false,
 			quantity: false,
             warehouseName: false
-        }
+        },
+		currentItem: {}
 	};
 
 	componentDidMount() {
 
-		//Initial api calls to generate category and warehouse list
-		axios
-			.get("/warehouses")
-			.then((response) => {
-				this.setState({ warehouseList: [...response.data] });
-			})
-			.catch((err) => {
-				console.log(err);
-			});
-
-		let catArr = [];
-
-		axios
-			.get("/inventories")
-			.then((response) => {
-				response.data.forEach((item) => {
-					if (
-						catArr.findIndex((category) => category === item.category) === -1
-					) {
-						catArr.push(item.category);
-					}
+				//Initial api calls to generate category and warehouse list
+				axios
+				.get("/warehouses")
+				.then((response) => {
+					this.setState({ warehouseList: [...response.data] });
+				})
+				.catch((err) => {
+					console.log(err);
 				});
-				this.setState({ categoryList: [...catArr] });
+	
+			let catArr = [];
+	
+			axios
+				.get("/inventories")
+				.then((response) => {
+					response.data.forEach((item) => {
+						if (
+							catArr.findIndex((category) => category === item.category) === -1
+						) {
+							catArr.push(item.category);
+						}
+					});
+					this.setState({ categoryList: [...catArr] });
+				})
+				.catch((err) => {
+					console.log(err);
+				});
+
+
+		axios
+			.get(`/inventories/${this.props.match.params.id}`)
+			.then((response) => {
+				this.setState({ currentItem: response.data });
 			})
 			.catch((err) => {
 				console.log(err);
@@ -92,8 +103,8 @@ export class NewInventory extends Component {
 					status: status.value,
 					quantity: status.value === "In Stock" ? quantity.value : 0,
 				};
-
-				axios.post("/inventories", newItem)
+					console.log(JSON.stringify(newItem));
+				axios.patch(`/inventories/${this.props.match.params.id}`, newItem)
 				.then(response =>
 					console.log(response.data) )
 				.catch(err => {console.error(err)})
@@ -121,18 +132,20 @@ export class NewInventory extends Component {
 						alt='Back Arrow'
 						style={{ marginRight: ".75rem" }}
 					/>
-					<h1 className='form__title'>Add New Inventory Item</h1>
+					<h1 className='form__title'>Edit Inventory Item</h1>
 				</div>
 				<div className='responsive'>
 					<ItemDetails
 						categoryList={this.state.categoryList}
 						submitted={this.state.submitted}
 						Errors={this.state.Errors}
+						currentItem={this.state.currentItem}
 					/>
 					<ItemAvailability
 						warehouseList={this.state.warehouseList}
 						submitted={this.state.submitted}
 						Errors={this.state.Errors}
+						currentItem={this.state.currentItem}
 					/>
 				</div>
 				<div className='button__container'>
@@ -149,4 +162,4 @@ export class NewInventory extends Component {
 	}
 }
 
-export default NewInventory;
+export default EditInventory;

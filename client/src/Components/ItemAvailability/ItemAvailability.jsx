@@ -4,7 +4,7 @@ export class ItemAvailability extends Component {
 	state = {
 		showQuantity: true,
 		showError: this.props.errors,
-		showErrors: this.props.testErrors,
+		showErrors: this.props.Errors,
 	};
 
 	componentDidMount(){
@@ -16,30 +16,20 @@ export class ItemAvailability extends Component {
 		if (this.props.submitted !== prevProps.submitted) {
 			this.setState({
 				showQuantity: true,
-				showError: !this.state.showError,
+				showErrors: !this.state.showError,
 			});
 		}
 
-		if (this.props.testErrors !== prevProps.testErrors) {
+		if (this.props.Errors !== prevProps.Errors) {
 			this.setState({
-				showErrors: { ...this.props.testErrors },
+				showErrors: { ...this.props.Errors },
 			});
 		}
 	}
 
 	render() {
-		const toggleQuantity = (e) => {
-			const { value } = e.target;
-
-
+		const toggleQuantity = () => {
 			this.setState({showQuantity: !this.state.showQuantity})
-			/* value === "Out of Stock"
-				? this.setState({
-						showQuantity: false,
-				  })
-				: this.setState({
-						showQuantity: true,
-				  }); */
 		};
 
 		return (
@@ -54,7 +44,7 @@ export class ItemAvailability extends Component {
 						className='form__input'
 						type='radio'
 						name='status'
-						value='In Stock'
+						defaultValue={this.props.currentItem ? this.props.currentItem.status : 'In Stock'}
 						defaultChecked
 					/>
 					<label
@@ -89,6 +79,7 @@ export class ItemAvailability extends Component {
 							placeholder='0'
 							min='1'
 							name='quantity'
+							defaultValue={this.props.currentItem ? this.props.currentItem.quantity : ''}
 						/>
 						<label
 							className='error__message'
@@ -105,7 +96,7 @@ export class ItemAvailability extends Component {
 				<label className='input__title' htmlFor='warehouseName'>
 					Warehouse
 				</label>
-				<select
+				<select defaultValue={this.props.currentItem ? this.props.currentItem.warehouseName : ''}
 					className={
 						this.state.showErrors.warehouseName
 							? "form__input-radius form__input-drop error"
@@ -115,11 +106,12 @@ export class ItemAvailability extends Component {
 					<option value=''>Please Select</option>
 					{this.props.warehouseList.map((warehouse, i) => {
 						return (
-							<option key={i} value={warehouse.name}>
+							<option key={i} defaultValue={warehouse.name}>
 								{warehouse.name}
 							</option>
 						);
 					})}
+					
 				</select>
 				<label
 					className='error__message'
