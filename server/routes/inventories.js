@@ -10,12 +10,10 @@ const WAREHOUSE_JSON_PATH = "data/warehouses.json";
 const INVENTORY_JSON_PATH = "data/inventories.json";
 const inventoryJSON = new JSONData("inventories");
 
-const inventoryJSON = new JSONData("inventories");
-
-const readFile =(filepath) => {
-    let data = fs.readFileSync(filepath)
-    return JSON.parse(data);
-}
+const readFile = (filepath) => {
+  let data = fs.readFileSync(filepath);
+  return JSON.parse(data);
+};
 
 /* GET ALL INVENTORY ITEMS */
 router.get("/", (req, res) => {
@@ -27,9 +25,11 @@ router.get("/", (req, res) => {
 /* GET SINGLE INVENTORY ITEM*/
 router.get("/:itemId", (req, res) => {
   const id = req.params.itemId;
-  const readInventory = readFile(INVENTORY_JSON_PATH)
-  const item = readInventory.find((singleInventory) => singleInventory.id == id);
-  res.status(200).json(item)
+  const readInventory = readFile(INVENTORY_JSON_PATH);
+  const item = readInventory.find(
+    (singleInventory) => singleInventory.id == id
+  );
+  res.status(200).json(item);
 
   // const inventory = getWarehouses(res);
   // if (warehouses) {
@@ -40,17 +40,22 @@ router.get("/:itemId", (req, res) => {
 
 /* GET INVENTORY ITEMS FROM SPECIFIC WAREHOUSE */
 router.get("/:warehouseId", (req, res) => {
-    const inventories = inventoryJSON.load((err) => res.status(400).send(err)); if (!inventories) return;
-    const id =  req.params.itemId;
-    if (id) {
-        const items = [ ];
-        inventories.filter(inv => inv.id === id)
-                   .forEach(inv => items.push(inv));
-        // TODO: Report an error if no such warehouse exists with that ID? Not sure.
-        // res.status(400).send(`No such warehouse exists with ID: ${id}`);
-        res.status(200).send(JSON.parse(inventories));
-    }
-    else res.status(400).res.status(400).send("Required ID parameter was null or unspecified.");
+  const inventories = inventoryJSON.load((err) => res.status(400).send(err));
+  if (!inventories) return;
+  const id = req.params.itemId;
+  if (id) {
+    const items = [];
+    inventories
+      .filter((inv) => inv.id === id)
+      .forEach((inv) => items.push(inv));
+    // TODO: Report an error if no such warehouse exists with that ID? Not sure.
+    // res.status(400).send(`No such warehouse exists with ID: ${id}`);
+    res.status(200).send(JSON.parse(inventories));
+  } else
+    res
+      .status(400)
+      .res.status(400)
+      .send("Required ID parameter was null or unspecified.");
 });
 
 /* CREATE A NEW INVENTORY ITEM*/
@@ -110,55 +115,68 @@ router.post("/", (req, res) => {
 });
 
 /* UPDATE SINGLE INVENTORY ITEM*/
-    router.patch("/:itemId", (req, res) => {
+router.patch("/:itemId", (req, res) => {
+  let parsedInventoryData = readFile(INVENTORY_JSON_PATH);
 
-        let parsedInventoryData = readFile(INVENTORY_JSON_PATH)
+  const { itemId } = req.params;
+  const {
+    itemName,
+    warehouseName,
+    description,
+    category,
+    status,
+    quantity,
+  } = req.body;
 
-        const { itemId } = req.params
-        const { itemName, warehouseName, description, category, status, quantity } = req.body
+  if (
+    !(
+      itemName &&
+      warehouseName &&
+      description &&
+      category &&
+      status &&
+      (status == "Out of Stock" ? 1 : quantity)
+    )
+  ) {
+    res.status(400).send("All item fields are REQUIRED");
+    return;
+  }
 
-        if( !(itemName && warehouseName && description && category && status && ( status == "Out of Stock" ?  1 : quantity )) )
-         {
-            res.status(400).send("All item fields are REQUIRED")
-            return
-        }
+  const foundItemIndex = parsedInventoryData.findIndex(
+    (item) => itemId == item.id
+  );
 
-        const foundItemIndex = parsedInventoryData.findIndex( item => itemId == item.id )
+  if (foundItemIndex === -1) {
+    res.status(404).send("Item not found");
+    return;
+  }
 
-            if( foundItemIndex === -1 ) {
-                res.status(404).send("Item not found")
-                return
-            }
+  parsedInventoryData[foundItemIndex] = {
+    ...parsedInventoryData[foundItemIndex],
+    ...req.body,
+  };
 
-        parsedInventoryData[foundItemIndex] = 
-        {
-        ...parsedInventoryData[foundItemIndex],
-        ...req.body
-        }
+  const stringInventoryData = JSON.stringify(parsedInventoryData);
+  fs.writeFileSync(INVENTORY_JSON_PATH, stringInventoryData);
 
-        const stringInventoryData = JSON.stringify(parsedInventoryData);
-        fs.writeFileSync(INVENTORY_JSON_PATH, stringInventoryData)
-
-        res.status(200).json(parsedInventoryData[foundItemIndex])
-
-    })
+  res.status(200).json(parsedInventoryData[foundItemIndex]);
+});
 
 /* DELETE A INVENTORY ITEM */
 router.delete("/:itemId", (req, res) => {
-    const inventories = inventoryJSON.load(err => res.status(400).send(err));
-    if (inventories) {
-        const id = req.params.id;
-        if (id) {
-            const index = inventories.findIndex((inv) => inv.id === id);
-            if (index >= 0) {
-                inventories.splice(index, 1); // remove the inventory item.
-                inventoryJSON.save(inventories);
-                res.sendStatus(200);
-            }
-            else res.status(400).send(`No such warehouse exists with ID: ${id}`);
-        }
-        else res.status(400).send("Required ID parameter was null or unspecified.");
-    }
+  const inventories = inventoryJSON.load((err) => res.status(400).send(err));
+  if (inventories) {
+    const id = req.params.id;
+    if (id) {
+      const index = inventories.findIndex((inv) => inv.id === id);
+      if (index >= 0) {
+        inventories.splice(index, 1); // remove the inventory item.
+        inventoryJSON.save(inventories);
+        res.sendStatus(200);
+      } else res.status(400).send(`No such warehouse exists with ID: ${id}`);
+    } else
+      res.status(400).send("Required ID parameter was null or unspecified.");
+  }
 });
 
-module.exports = router
+module.exports = router;

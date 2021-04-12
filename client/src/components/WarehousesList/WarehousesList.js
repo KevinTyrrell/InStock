@@ -14,11 +14,14 @@ class WarehouseList extends React.Component {
   };
 
   componentDidMount() {
-    axios.get(url).then((response) => {
-      this.setState({ warehouseData: response.data });
-    }).catch(err => {
-        console.log(err)
-    });
+    axios
+      .get(url)
+      .then((response) => {
+        this.setState({ warehouseData: response.data });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   render() {

@@ -2,13 +2,13 @@
 import "./App.scss";
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import WarehousesList from "./Components/WarehousesList/WarehousesList";
-import AddWarehouse from './Components/NewWarehouse/AddWarehouse'
-import Header from './Components/Header/Header';
-import Footer from './Components/Footer/Footer';
-import SingleInventory from './Components/SingleInventory/SingleInventory';
-import InventoryList from './Components/InventoryList/InventoryList';
-
+import WarehousesList from "./components/WarehousesList/WarehousesList";
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
+import AddWarehouse from "./components/NewWarehouse/Addwarehouse";
+import WarehouseDets from "./components/WarehouseDets/WarehouseDets";
+import InventoryList from "./components/InventoryList/InventoryList";
+import SingleInventory from "./components/SingleInventory/SingleInventory";
 
 class App extends React.Component {
   render() {
@@ -19,7 +19,8 @@ class App extends React.Component {
         <Switch>
           <Route path="/warehouses" exact component={WarehousesList} />
           <Route path="/inventories/:itemId" component={SingleInventory} />
-         {/* <Route path="" component={}/>
+          <Route path="/warehouses/:id" component={WarehouseDets} />
+          {/* <Route path="" component={}/>
          <Route path="" component={}/> */}
           {/* <Route path="" component={}/> */}
           <Route path="/inventories" exact component={InventoryList} />
