@@ -9,7 +9,7 @@ import sortArrows from "../../InStock Assets/Icons/sort-24px.svg";
 
 export class WarehouseDets extends Component {
   state = {
-    currWarehouse: [],
+    currware: [],
   };
 
   // state = {
@@ -18,8 +18,11 @@ export class WarehouseDets extends Component {
 
   componentDidMount() {
     axios
-      .get("/data/:warehouseId")
-      .then((res) => this.setState({ currInventory: res.data }))
+      .get("/warehouses/:warehouseId")
+      .then((res) => {
+        this.setState({ currware: res.target.value });
+        console.log(currware);
+      })
       .catch((err) => {
         console.log(err);
       });
@@ -37,43 +40,48 @@ export class WarehouseDets extends Component {
   render() {
     return (
       <section className="warehouse">
-        <div>
-          <div className="warehouse__inline">
-            <div className="inline">
-              <img src={backArrow} alt="back arrow" />
-              <h1 className="warehouse__name">Ware Name</h1>
-            </div>
-            <img src={editBtn} id="edit" alt="edit button" />
-          </div>
-          <div className="details">
+        {this.state.currware.map((currWare) => {
+          return (
             <div>
-              <h4 className="details__address">WAREHOUSE ADDRESS:</h4>
-              <h4 className="details__address--loc">
-                123 Replace Me,
-                <br />
-                After, Style **
-              </h4>
-            </div>
-            <div className="contact">
-              <div>
-                <h4 className="contact__name">CONTACT NAME:</h4>
-                <h4 className="contact__name--pos">
-                  Contact Name
-                  <br />
-                  Contact Position
-                </h4>
+              <div className="warehouse__inline">
+                <div className="inline">
+                  <img src={backArrow} alt="back arrow" />
+                  <h1 className="warehouse__name">ware name</h1>
+                </div>
+                <img src={editBtn} id="edit" alt="edit button" />
               </div>
-              <div className="contact__inline">
-                <h4 className="contact__info">CONTACT INFORMATION:</h4>
-                <h4 className="contact__info--phone">
-                  +1-561-235-8490
-                  <br />
-                  alexa@google.com
-                </h4>
+              <div className="details">
+                <div>
+                  <h4 className="details__address">WAREHOUSE ADDRESS:</h4>
+                  <h4 className="details__address--loc">
+                    123 Replace Me,
+                    <br />
+                    After, Style **
+                  </h4>
+                </div>
+                <div className="contact">
+                  <div>
+                    <h4 className="contact__name">CONTACT NAME:</h4>
+                    <h4 className="contact__name--pos">
+                      Contact Name
+                      <br />
+                      Contact Position
+                    </h4>
+                  </div>
+                  <div className="contact__inline">
+                    <h4 className="contact__info">CONTACT INFORMATION:</h4>
+                    <h4 className="contact__info--phone">
+                      +1-561-235-8490
+                      <br />
+                      alexa@google.com
+                    </h4>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
+          );
+        })}
+
         <table>
           <tr className="sortBar">
             <th className="sortBar__items">
