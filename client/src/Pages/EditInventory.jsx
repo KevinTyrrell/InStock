@@ -103,8 +103,8 @@ export class EditInventory extends Component {
 					status: status.value,
 					quantity: status.value === "In Stock" ? quantity.value : 0,
 				};
-
-				axios.post("/inventories", newItem)
+					console.log(JSON.stringify(newItem));
+				axios.patch(`/inventories/${this.props.match.params.id}`, newItem)
 				.then(response =>
 					console.log(response.data) )
 				.catch(err => {console.error(err)})
