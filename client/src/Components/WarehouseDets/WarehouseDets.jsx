@@ -4,7 +4,7 @@ import backArrow from "../../InStock Assets/Icons/arrow_back-24px.svg";
 import editBtn from "../../InStock Assets/Icons/edit-24px.svg";
 import chevRight from "../../InStock Assets/Icons/chevron_right-24px.svg";
 import deleteBtn from "../../InStock Assets/Icons/delete_outline-24px.svg";
-// import axios from "axios";
+import axios from "axios";
 import sortArrows from "../../InStock Assets/Icons/sort-24px.svg";
 
 export class WarehouseDets extends Component {
@@ -12,14 +12,12 @@ export class WarehouseDets extends Component {
   //   currentWarehouse: [],
   // };
 
-  // // state = {
-  // //   currInventory: null,
-  // // };
-
   // componentDidMount() {
-  //   // let id = this.state.id;
+  //   const {
+  //     match: { params },
+  //   } = this.props;
   //   axios
-  //     .get(`/warehouses/2922c286-16cd-4d43-ab98-c79f698aeab0`)
+  //     .get(`/warehouses/${params.warehouseId}`)
   //     .then((res) => {
   //       this.setState({ currentWarehouse: res.data });
   //     })
@@ -27,15 +25,6 @@ export class WarehouseDets extends Component {
   //       console.log(err);
   //     });
   // }
-
-  //   componentDidMount() {
-  //     axios
-  //       .get("/data/:warehouseId")
-  //       .then((res) => this.setState({ currInventory: res.data }))
-  //       .catch((err) => {
-  //         console.log(err);
-  //       });
-  //   }
 
   render() {
     return (

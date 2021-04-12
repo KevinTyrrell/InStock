@@ -10,8 +10,6 @@ const WAREHOUSE_JSON_PATH = "data/warehouses.json";
 const INVENTORY_JSON_PATH = "data/inventories.json";
 const inventoryJSON = new JSONData("inventories");
 
-const inventoryJSON = new JSONData("inventories");
-
 const readFile = (filepath) => {
   let data = fs.readFileSync(filepath);
   return JSON.parse(data);

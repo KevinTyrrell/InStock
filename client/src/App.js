@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import WarehousesList from "./components/WarehousesList/WarehousesList";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
-import AddWarehouse from "./components/NewWarehouse/AddWarehouse";
+import AddWarehouse from "./components/NewWarehouse/Addwarehouse";
 import WarehouseDets from "./components/WarehouseDets/WarehouseDets";
 import InventoryList from "./components/InventoryList/InventoryList";
 import SingleInventory from "./components/SingleInventory/SingleInventory";

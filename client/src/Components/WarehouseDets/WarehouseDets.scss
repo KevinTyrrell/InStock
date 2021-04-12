@@ -23,6 +23,10 @@ a {
   right: 4.27%;
   top: 136px;
   bottom: 4.95%;
+  @include desktop {
+    left: 10.16%;
+    right: 10.16%;
+  }
 
   &__inline {
     display: flex;
